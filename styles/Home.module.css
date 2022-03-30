@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+=======
+@media (max-width: 1100px) {
+  .grid {
+    width: 80%;
+    flex-direction: column;
+  }
+}
+>>>>>>> main
