@@ -5,7 +5,14 @@ import header_picture from '/public/header-picture.jpeg';
 export default function Foodlist() {
   return (
     <AppContainer>
-      <Image src={header_picture} alt="wine picture" />
+      <StyledDiv>
+        <Image
+          src={header_picture}
+          alt="wine picture"
+          layout={'fill'}
+          objectFit={'cover'}
+        />
+      </StyledDiv>
       <StyledHeader>Was möchtest du Essen?</StyledHeader>
       <Container>
         <FoodButton>Seafood</FoodButton>
@@ -73,4 +80,10 @@ const StyledCounter = styled.div`
   color: white;
   margin-top: 1.5rem;
   font-size: 18px;
+`;
+
+const StyledDiv = styled.div`
+  height: 183px;
+  width: 100%;
+  position: relative;
 `;
