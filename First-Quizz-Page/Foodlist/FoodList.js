@@ -16,7 +16,7 @@ export default function Foodlist() {
         <FoodButton>Pasta</FoodButton>
       </Container>
       <BackArrow>&larr;</BackArrow>
-      <StyledFooter>Noch 3 Fragen bis zum perfekten Wein!</StyledFooter>
+      <StyledCounter>Noch 3 Fragen bis zum perfekten Wein!</StyledCounter>
     </AppContainer>
   );
 }
@@ -69,7 +69,7 @@ const StyledHeader = styled.h1`
   font-weight: 500;
 `;
 
-const StyledFooter = styled.footer`
+const StyledCounter = styled.div`
   color: white;
   margin-top: 1.5rem;
   font-size: 18px;
