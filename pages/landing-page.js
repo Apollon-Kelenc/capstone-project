@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import landing_picture from '/public/landing-page-picture.jpeg';
@@ -21,7 +22,9 @@ export default function LandingPage() {
           Weinempfehlung für dein Essen.
         </article>
       </ArticleContainer>
-      <StartQuizzButton>Starte das Quizz</StartQuizzButton>
+      <Link href="/first-quizz-page">
+        <StartQuizzButton>Starte das Quizz</StartQuizzButton>
+      </Link>
     </AppContainer>
   );
 }
