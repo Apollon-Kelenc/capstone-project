@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 
-export default function Foodlist() {
+export default function Meatlist() {
   return (
     <AppContainer>
       <ImageContainer>
@@ -13,18 +14,19 @@ export default function Foodlist() {
           objectFit={'cover'}
         />
       </ImageContainer>
-      <StyledHeader>Was möchtest du Essen?</StyledHeader>
+      <StyledHeader>Wähle deine Fleischsorte</StyledHeader>
       <Container>
-        <FoodButton>Seafood</FoodButton>
-        <FoodButton>Fleisch</FoodButton>
-        <FoodButton>Vegetarisch</FoodButton>
-        <FoodButton>Käse</FoodButton>
-        <FoodButton>Dessert</FoodButton>
-        <FoodButton>Pasta</FoodButton>
+        <FoodButton>Hähnchen</FoodButton>
+        <FoodButton>Ente</FoodButton>
+        <FoodButton>Schwein</FoodButton>
+        <FoodButton>Lamm</FoodButton>
+        <FoodButton>Rind</FoodButton>
       </Container>
-      <BackArrow>&larr;</BackArrow>
+      <Link href="/first-quizz-page">
+        <BackArrow>&larr;</BackArrow>
+      </Link>
       <StyledCounter>
-        Noch <strong>3</strong> Fragen bis zum perfekten Wein!
+        Noch <strong>2</strong> Fragen bis zum perfekten Wein!
       </StyledCounter>
     </AppContainer>
   );
@@ -58,7 +60,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   background-image: linear-gradient(
     rgba(244, 194, 194, 1),
     rgba(128, 0, 32, 1)

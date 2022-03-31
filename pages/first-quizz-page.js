@@ -1,32 +1,39 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 
 export default function Foodlist() {
   return (
-    <AppContainer>
-      <ImageContainer>
-        <Image
-          src={header_picture}
-          alt="wine picture"
-          layout={'fill'}
-          objectFit={'cover'}
-        />
-      </ImageContainer>
-      <StyledHeader>Was möchtest du Essen?</StyledHeader>
-      <Container>
-        <FoodButton>Seafood</FoodButton>
-        <FoodButton>Fleisch</FoodButton>
-        <FoodButton>Vegetarisch</FoodButton>
-        <FoodButton>Käse</FoodButton>
-        <FoodButton>Dessert</FoodButton>
-        <FoodButton>Pasta</FoodButton>
-      </Container>
-      <BackArrow>&larr;</BackArrow>
-      <StyledCounter>
-        Noch <strong>3</strong> Fragen bis zum perfekten Wein!
-      </StyledCounter>
-    </AppContainer>
+    <>
+      <AppContainer>
+        <ImageContainer>
+          <Image
+            src={header_picture}
+            alt="wine picture"
+            layout={'fill'}
+            objectFit={'cover'}
+          />
+        </ImageContainer>
+        <StyledHeader>Was möchtest du Essen?</StyledHeader>
+        <Container>
+          <FoodButton>Seafood</FoodButton>
+          <Link href="/meat-quizz-page">
+            <FoodButton>Fleisch</FoodButton>
+          </Link>
+          <FoodButton>Vegetarisch</FoodButton>
+          <FoodButton>Käse</FoodButton>
+          <FoodButton>Dessert</FoodButton>
+          <FoodButton>Pasta</FoodButton>
+        </Container>
+        <Link href="/landing-page">
+          <BackArrow>&larr;</BackArrow>
+        </Link>
+        <StyledCounter>
+          Noch <strong>3</strong> Fragen bis zum perfekten Wein!
+        </StyledCounter>
+      </AppContainer>
+    </>
   );
 }
 
@@ -58,7 +65,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   background-image: linear-gradient(
     rgba(244, 194, 194, 1),
     rgba(128, 0, 32, 1)
