@@ -5,31 +5,33 @@ import landing_picture from '/public/landing-page-picture.jpeg';
 
 export default function LandingPage() {
   return (
-    <AppContainer>
-      <StyledHeader>Willkommen bei</StyledHeader>
-      <StyledAppName>In Vino Veritas</StyledAppName>
-      <ImageContainer>
-        <Image
-          src={landing_picture}
-          alt="wine picture"
-          layout={'fill'}
-          objectFit={'cover'}
-        />
-      </ImageContainer>
-      <ArticleContainer>
-        <article>
-          Beantworte die folgenden Fragen und erhalte deine personalisierte
-          Weinempfehlung für dein Essen.
-        </article>
-      </ArticleContainer>
-      <Link href="/first-quizz-page">
-        <StartQuizzButton>Starte das Quizz</StartQuizzButton>
-      </Link>
-    </AppContainer>
+    <>
+      <AppContainer>
+        <StyledHeader>Willkommen bei</StyledHeader>
+        <StyledAppName>In Vino Veritas</StyledAppName>
+        <ImageContainer>
+          <Image
+            src={landing_picture}
+            alt="wine picture"
+            layout={'fill'}
+            objectFit={'cover'}
+          />
+        </ImageContainer>
+        <ParagraphContainer>
+          <p>
+            Beantworte die folgenden Fragen und erhalte deine personalisierte
+            Weinempfehlung für dein Essen.
+          </p>
+        </ParagraphContainer>
+        <Link href="/first-quizz-page">
+          <StartQuizzButton>Starte das Quizz</StartQuizzButton>
+        </Link>
+      </AppContainer>
+    </>
   );
 }
 
-const ArticleContainer = styled.div`
+const ParagraphContainer = styled.div`
   margin: 50px 30px 0px 30px;
   padding: 60px 40px;
   background-color: rgba(255, 255, 236, 1);
@@ -52,7 +54,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   background-image: linear-gradient(
     rgba(244, 194, 194, 1),
     rgba(128, 0, 32, 1)

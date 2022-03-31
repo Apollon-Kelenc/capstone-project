@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 
-export default function Foodlist() {
+export default function Meatlist() {
   return (
     <>
       <AppContainer>
@@ -15,22 +15,19 @@ export default function Foodlist() {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Was möchtest du Essen?</StyledHeader>
+        <StyledHeader>Wähle deine Fleischsorte</StyledHeader>
         <Container>
-          <FoodButton>Seafood</FoodButton>
-          <Link href="/meat-quizz-page">
-            <FoodButton>Fleisch</FoodButton>
-          </Link>
-          <FoodButton>Vegetarisch</FoodButton>
-          <FoodButton>Käse</FoodButton>
-          <FoodButton>Dessert</FoodButton>
-          <FoodButton>Pasta</FoodButton>
+          <FoodButton>Hähnchen</FoodButton>
+          <FoodButton>Ente</FoodButton>
+          <FoodButton>Schwein</FoodButton>
+          <FoodButton>Lamm</FoodButton>
+          <FoodButton>Rind</FoodButton>
         </Container>
-        <Link href="/landing-page">
+        <Link href="/first-quizz-page">
           <BackArrow>&larr;</BackArrow>
         </Link>
         <StyledCounter>
-          Noch <strong>3</strong> Fragen bis zum perfekten Wein!
+          Noch <strong>2</strong> Fragen bis zum perfekten Wein!
         </StyledCounter>
       </AppContainer>
     </>
