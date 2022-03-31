@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import LandingPage from './landing-page';
 import styled from 'styled-components';
-import Foodlist from './first-quizz-page';
 
 export default function Home() {
   return (

@@ -65,7 +65,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: inherit;
+  height: 100vh;
   background-image: linear-gradient(
     rgba(244, 194, 194, 1),
     rgba(128, 0, 32, 1)

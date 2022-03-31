@@ -5,32 +5,30 @@ import header_picture from '/public/header-picture.jpeg';
 
 export default function Meatlist() {
   return (
-    <>
-      <AppContainer>
-        <ImageContainer>
-          <Image
-            src={header_picture}
-            alt="wine picture"
-            layout={'fill'}
-            objectFit={'cover'}
-          />
-        </ImageContainer>
-        <StyledHeader>Wähle deine Fleischsorte</StyledHeader>
-        <Container>
-          <FoodButton>Hähnchen</FoodButton>
-          <FoodButton>Ente</FoodButton>
-          <FoodButton>Schwein</FoodButton>
-          <FoodButton>Lamm</FoodButton>
-          <FoodButton>Rind</FoodButton>
-        </Container>
-        <Link href="/first-quizz-page">
-          <BackArrow>&larr;</BackArrow>
-        </Link>
-        <StyledCounter>
-          Noch <strong>2</strong> Fragen bis zum perfekten Wein!
-        </StyledCounter>
-      </AppContainer>
-    </>
+    <AppContainer>
+      <ImageContainer>
+        <Image
+          src={header_picture}
+          alt="wine picture"
+          layout={'fill'}
+          objectFit={'cover'}
+        />
+      </ImageContainer>
+      <StyledHeader>Wähle deine Fleischsorte</StyledHeader>
+      <Container>
+        <FoodButton>Hähnchen</FoodButton>
+        <FoodButton>Ente</FoodButton>
+        <FoodButton>Schwein</FoodButton>
+        <FoodButton>Lamm</FoodButton>
+        <FoodButton>Rind</FoodButton>
+      </Container>
+      <Link href="/first-quizz-page">
+        <BackArrow>&larr;</BackArrow>
+      </Link>
+      <StyledCounter>
+        Noch <strong>2</strong> Fragen bis zum perfekten Wein!
+      </StyledCounter>
+    </AppContainer>
   );
 }
 
@@ -62,7 +60,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: inherit;
+  height: 100vh;
   background-image: linear-gradient(
     rgba(244, 194, 194, 1),
     rgba(128, 0, 32, 1)
