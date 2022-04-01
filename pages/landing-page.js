@@ -23,8 +23,8 @@ export default function LandingPage() {
             Weinempfehlung für dein Essen.
           </p>
         </ParagraphContainer>
-        <Link href="/first-quizz-page">
-          <StartQuizzButton>Starte das Quizz</StartQuizzButton>
+        <Link href="/quiz/start" passHref>
+          <StartQuizButton>Starte das Quiz</StartQuizButton>
         </Link>
       </AppContainer>
     </>
@@ -40,8 +40,8 @@ const ParagraphContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   border: 2px solid black;
   border-radius: 50%;
   position: relative;
@@ -61,7 +61,7 @@ const AppContainer = styled.div`
   );
 `;
 
-const StartQuizzButton = styled.button`
+const StartQuizButton = styled.button`
   font-size: 31px;
   font-weight: 500;
   margin-top: 3.5rem;
@@ -73,7 +73,8 @@ const StartQuizzButton = styled.button`
   width: 300px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
-  :hover {
+  :hover,
+  :active {
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
   }

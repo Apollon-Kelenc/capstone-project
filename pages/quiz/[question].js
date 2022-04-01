@@ -1,9 +1,19 @@
-import Link from 'next/link';
-import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+import { quiz } from '../../lib/quiz';
 import header_picture from '/public/header-picture.jpeg';
 
-export default function Foodlist() {
+const Question = () => {
+  const router = useRouter();
+  const { question } = router.query;
+
+  const currentQuestion = quiz[question];
+
+  if (!currentQuestion) {
+    return <div>Question not found :(</div>;
+  }
   return (
     <>
       <AppContainer>
@@ -15,27 +25,34 @@ export default function Foodlist() {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Was möchtest du Essen?</StyledHeader>
+        <StyledHeader>{currentQuestion.question}</StyledHeader>
         <Container>
-          <FoodButton>Seafood</FoodButton>
-          <Link href="/meat-quizz-page">
-            <FoodButton>Fleisch</FoodButton>
-          </Link>
-          <FoodButton>Vegetarisch</FoodButton>
-          <FoodButton>Käse</FoodButton>
-          <FoodButton>Dessert</FoodButton>
-          <FoodButton>Pasta</FoodButton>
+          {currentQuestion.answers.map(answer => (
+            <FoodButton
+              key={answer.label}
+              onClick={() => {
+                setTimeout(() => {
+                  router.push(`/quiz/${answer.nextQuestion}`);
+                }, 300);
+              }}
+            >
+              {answer.label}
+            </FoodButton>
+          ))}
         </Container>
-        <Link href="/landing-page">
+        <Link href="/landing-page" passHref>
           <BackArrow>&larr;</BackArrow>
         </Link>
         <StyledCounter>
-          Noch <strong>3</strong> Fragen bis zum perfekten Wein!
+          Noch <strong>{currentQuestion.remaining}</strong> Fragen bis zum
+          perfekten Wein!
         </StyledCounter>
       </AppContainer>
     </>
   );
-}
+};
+
+export default Question;
 
 const Container = styled.div`
   display: grid;
@@ -53,10 +70,9 @@ const FoodButton = styled.button`
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  transition: 0.3s;
+  transition: 0.1s;
   :hover {
     border: 3px solid black;
-    font-size: large;
     border-color: rgba(89, 199, 72, 1);
   }
 `;
@@ -73,12 +89,13 @@ const AppContainer = styled.div`
 `;
 
 const BackArrow = styled.button`
+  position: fixed;
+  bottom: 9rem;
   background-color: rgba(255, 255, 236, 1);
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
   font-size: 40px;
-  margin-top: 2.5rem;
   padding-bottom: 5px;
   color: black;
   transition: 0ms;
@@ -94,8 +111,9 @@ const StyledHeader = styled.h1`
 `;
 
 const StyledCounter = styled.div`
+  position: fixed;
   color: white;
-  margin-top: 4rem;
+  bottom: 4.5rem;
   font-size: 19px;
 `;
 
