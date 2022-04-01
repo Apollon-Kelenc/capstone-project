@@ -82,10 +82,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(
-    rgba(244, 194, 194, 1),
-    rgba(128, 0, 32, 1)
-  );
+  background: rgba(94, 91, 91);
 `;
 
 const BackArrow = styled.button`

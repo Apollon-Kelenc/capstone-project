@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
-import landing_picture from '/public/landing-page-picture.jpeg';
+import landing_picture from '../public/landing-page-background.jpeg';
 
 export default function LandingPage() {
   return (
     <>
       <AppContainer>
-        <StyledHeader>Willkommen bei</StyledHeader>
         <StyledAppName>In Vino Veritas</StyledAppName>
         <ImageContainer>
           <Image
@@ -15,6 +14,8 @@ export default function LandingPage() {
             alt="wine picture"
             layout={'fill'}
             objectFit={'cover'}
+            unoptimized={true}
+            quality="100"
           />
         </ImageContainer>
         <ParagraphContainer>
@@ -40,14 +41,10 @@ const ParagraphContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 120px;
-  width: 120px;
-  border: 2px solid black;
-  border-radius: 50%;
-  position: relative;
+  height: 200%;
+  width: 100%;
+  position: absolute;
   overflow: hidden;
-  margin-top: 2.5rem;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const AppContainer = styled.div`
@@ -80,16 +77,10 @@ const StartQuizButton = styled.button`
   }
 `;
 
-const StyledHeader = styled.h1`
-  margin-top: 7.5rem;
-  font-size: 45px;
-  font-weight: lighter;
-  font-family: 'Tangerine', cursive;
-`;
-
 const StyledAppName = styled.h1`
   margin-top: 0.5rem;
   font-size: 70px;
   font-weight: 500;
-  font-family: 'Tangerine', cursive;
+  font-family: 'Trochut';
+  color: white;
 `;
