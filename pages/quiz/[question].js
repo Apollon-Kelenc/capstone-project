@@ -33,7 +33,7 @@ const Question = () => {
               onClick={() => {
                 setTimeout(() => {
                   router.push(`/quiz/${answer.nextQuestion}`);
-                }, 300);
+                }, 200);
               }}
             >
               {answer.label}
