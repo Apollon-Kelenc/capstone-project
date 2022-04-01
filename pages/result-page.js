@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
-import Wine_Picture from '/public/Vincent-Dereuil.png';
+import Wine_Picture from '/public/wine/Vincent-Dereuil.png';
 import { Icon } from '@iconify/react';
 
 export default function ResultPage() {
@@ -119,7 +119,7 @@ const RestartQuizButton = styled.button`
   align-items: center;
   font-size: 31px;
   font-weight: 500;
-  margin-top: 3.5rem;
+  margin: 1.5rem;
   padding: 1rem;
   color: white;
   background-color: rgba(32, 32, 36, 1);

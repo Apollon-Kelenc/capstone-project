@@ -70,9 +70,9 @@ const FoodButton = styled.button`
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  transition: 0.1s;
+  transition: 0s;
   :hover {
-    border: 3px solid black;
+    border: 3px solid;
     border-color: rgba(89, 199, 72, 1);
   }
 `;
