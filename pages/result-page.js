@@ -42,11 +42,10 @@ export default function ResultPage() {
               <strong>Säuerlich</strong>
             </li>
           </StyledList>
-          <p>
+          <WineType>
             Art:
             <strong>Weißwein</strong>
-          </p>
-          <></>
+          </WineType>
           <p>
             Passt zu:
             <strong>Hähnchen</strong>
@@ -90,6 +89,9 @@ const WineName = styled.p`
   margin-bottom: 1rem;
 `;
 
+const WineType = styled.p`
+  margin-bottom: 0.5rem;
+`;
 const StyledList = styled.ul`
   margin: 1rem 0rem 2rem 0rem;
   list-style: none;
