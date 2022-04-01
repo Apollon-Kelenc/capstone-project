@@ -14,9 +14,6 @@ const Question = () => {
   if (!currentQuestion) {
     return <div>Question not found :(</div>;
   }
-
-  console.log(currentQuestion);
-
   return (
     <>
       <AppContainer>
