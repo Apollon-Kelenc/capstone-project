@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
-import landing_picture from '../public/landing-page-background.jpeg';
+import landing_picture from '../public/landing-page-background.png';
 
 export default function LandingPage() {
   return (
     <>
       <AppContainer>
-        <StyledAppName>In Vino Veritas</StyledAppName>
         <ImageContainer>
           <Image
             src={landing_picture}
@@ -18,6 +17,8 @@ export default function LandingPage() {
             quality="100"
           />
         </ImageContainer>
+        <StyledAppName>In Vino Veritas</StyledAppName>
+        <AppInfo>Dein Wein Sommelier</AppInfo>
         <ParagraphContainer>
           <p>
             Beantworte die folgenden Fragen und erhalte deine personalisierte
@@ -31,56 +32,60 @@ export default function LandingPage() {
     </>
   );
 }
+const AppContainer = styled.div`
+  height: 100vh;
+  bottom: 60rem;
+  background-color: black;
+`;
 
+const StyledAppName = styled.h1`
+  padding: 11rem 0rem 0rem 0rem;
+  margin: 0rem 0rem 1rem 1rem;
+  font-size: 50px;
+  font-weight: lighter;
+  font-family: 'Trochut';
+  color: white;
+  position: relative;
+  z-index: 2;
+`;
+const AppInfo = styled.p`
+  margin-left: 1rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+`;
 const ParagraphContainer = styled.div`
-  margin: 50px 30px 0px 30px;
-  padding: 60px 40px;
-  background-color: rgba(255, 255, 236, 1);
-  border: 2px solid black;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+  padding: 0rem 8rem 0rem 1rem;
+  color: white;
+  position: relative;
+  z-index: 2;
 `;
 
 const ImageContainer = styled.div`
-  height: 200%;
+  height: 100%;
   width: 100%;
   position: absolute;
-  overflow: hidden;
-`;
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  background-image: linear-gradient(
-    rgba(244, 194, 194, 1),
-    rgba(128, 0, 32, 1)
-  );
+  z-index: 1;
 `;
 
 const StartQuizButton = styled.button`
   font-size: 31px;
   font-weight: 500;
-  margin-top: 3.5rem;
+  margin: 20rem 0rem 0rem 3rem;
   color: white;
-  background-color: rgba(32, 32, 36, 1);
-  border: 0.5px solid white;
+  background-color: rgba(109, 19, 40);
   border-radius: 9px;
   height: 75px;
   width: 300px;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
-  transition: 0.2s;
+  transition: 0.1s;
+  border: none;
+  position: relative;
+  z-index: 2;
   :hover,
   :active {
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
+    border: 2px solid rgba(89, 199, 72, 1);
   }
-`;
-
-const StyledAppName = styled.h1`
-  margin-top: 0.5rem;
-  font-size: 70px;
-  font-weight: 500;
-  font-family: 'Trochut';
-  color: white;
 `;

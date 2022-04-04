@@ -17,7 +17,7 @@ export default function ResultPage() {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Deine Empfehlung:</StyledHeader>
+        <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
           <WineBottleContainer>
             <Image
@@ -66,13 +66,12 @@ const StyledHeader = styled.h1`
   margin: 2rem 2rem;
   font-size: 27px;
   font-weight: 500;
+  color: white;
 `;
 
 const ParagraphContainer = styled.div`
   padding: 20px 20px;
-  background-color: rgba(255, 255, 236, 1);
-  border: 2px solid black;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
+  color: white;
 `;
 
 const WineBottleContainer = styled.div`
@@ -108,10 +107,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(
-    rgba(244, 194, 194, 1),
-    rgba(128, 0, 32, 1)
-  );
+  background-color: rgba(94, 91, 91);
 `;
 
 const RestartQuizButton = styled.button`
