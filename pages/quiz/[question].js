@@ -105,6 +105,7 @@ const StyledHeader = styled.h1`
   margin: 2rem 2rem;
   font-size: 27px;
   font-weight: 500;
+  color: white;
 `;
 
 const StyledCounter = styled.div`
