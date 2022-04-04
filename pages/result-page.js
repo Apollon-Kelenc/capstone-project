@@ -27,28 +27,18 @@ export default function ResultPage() {
               objectFit={'cover'}
             />
           </WineBottleContainer>
-          <strong>
-            <WineName>Vincent Dureuil-Rully Blanc</WineName>
-          </strong>
+          <WineName>Vincent Dureuil-Rully Blanc</WineName>
           <p>Geschmacksprofil:</p>
           <StyledList>
-            <li>
-              <strong>Üppig</strong>
-            </li>
-            <li>
-              <strong>Trocken</strong>
-            </li>
-            <li>
-              <strong>Säuerlich</strong>
-            </li>
+            <li>Üppig</li>
+            <li>Trocken</li>
+            <li>Säuerlich</li>
           </StyledList>
           <WineType>
-            Art:
-            <strong>Weißwein</strong>
+            Art: <strong>Weißwein</strong>
           </WineType>
           <p>
-            Passt zu:
-            <strong>Hähnchen</strong>
+            Passt zu: <strong>Hähnchen</strong>
           </p>
         </ParagraphContainer>
         <Link href="/quiz/start" passHref>
@@ -86,6 +76,7 @@ const WineBottleContainer = styled.div`
 const WineName = styled.p`
   font-size: 20px;
   margin-bottom: 1rem;
+  font-weight: 700;
 `;
 
 const WineType = styled.p`
@@ -94,6 +85,7 @@ const WineType = styled.p`
 const StyledList = styled.ul`
   margin: 1rem 0rem 2rem 0rem;
   list-style: none;
+  font-weight: 700;
 `;
 
 const ImageContainer = styled.div`

@@ -34,7 +34,6 @@ export default function LandingPage() {
 }
 const AppContainer = styled.div`
   height: 100vh;
-  bottom: 60rem;
   background-color: black;
 `;
 
