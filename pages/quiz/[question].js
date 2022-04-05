@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,13 +8,29 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = () => {
+  //   const [wineFilter, setWineFilter] = useState();
   const router = useRouter();
   const { question } = router.query;
 
   const currentQuestion = quiz[question];
-  const resultWine = wine;
+  const quizAnswers = quiz.start.answers;
+  function getFilteredWine(quizAnswers, wine) {
+    for (let i = 0; i < quizAnswers.length; i++) {
+      for (let j = 0; j < wine.length; j++) {
+        wine[j].tag.filter(item => {
+          //   return item === quizAnswers[i].filter;
+          console.log(item);
+        });
+        // console.log(wine[j].tag);
+        // console.log(quizAnswers[i].filter);
+      }
+    }
+  }
+  const filteredWine = getFilteredWine(quizAnswers, wine);
+  console.log(filteredWine);
+  //   const filteredWine = wine.filter(() => wine.tag === filter);
 
-  console.log(wine);
+  //   console.log(wine[0].tag);
 
   if (!currentQuestion) {
     return <div>Question not found :(</div>;
@@ -86,10 +103,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(
-    rgba(244, 194, 194, 1),
-    rgba(128, 0, 32, 1)
-  );
+  background-color: rgba(94, 91, 91);
 `;
 
 const BackArrow = styled.button`
