@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,29 +8,40 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = () => {
-  //   const [wineFilter, setWineFilter] = useState();
+  const [chosenAnswers, setChosenAnswers] = useState([]);
+  const [filteredWine, setFilteredWine] = useState([]);
+  console.log('chosenAnswers', chosenAnswers);
+  console.log('filteredWine', filteredWine);
   const router = useRouter();
   const { question } = router.query;
 
   const currentQuestion = quiz[question];
   const quizAnswers = quiz.start.answers;
-  function getFilteredWine(quizAnswers, wine) {
-    for (let i = 0; i < quizAnswers.length; i++) {
-      for (let j = 0; j < wine.length; j++) {
-        wine[j].tag.filter(item => {
-          //   return item === quizAnswers[i].filter;
-          console.log(item);
-        });
-        // console.log(wine[j].tag);
-        // console.log(quizAnswers[i].filter);
-      }
-    }
-  }
-  const filteredWine = getFilteredWine(quizAnswers, wine);
-  console.log(filteredWine);
-  //   const filteredWine = wine.filter(() => wine.tag === filter);
 
-  //   console.log(wine[0].tag);
+  useEffect(() => {
+    if (chosenAnswers.length < 3) {
+      return;
+    } else {
+      filterWine();
+    }
+  }, []);
+
+  function filterWine() {
+    chosenAnswers.map(chosenAnswer => {
+      const chosenWine = wine.filter(wine =>
+        wine.tag.some(tag => tag === chosenAnswer.filter)
+      );
+      console.log('chosenWine', chosenWine);
+      setFilteredWine([...filteredWine, chosenWine]);
+    });
+  }
+
+  function saveAnswer(nextQuestion, answer) {
+    setChosenAnswers([...chosenAnswers, answer]);
+    setTimeout(() => {
+      router.push(`/quiz/${nextQuestion}`);
+    }, 200);
+  }
 
   if (!currentQuestion) {
     return <div>Question not found :(</div>;
@@ -52,9 +63,7 @@ const Question = () => {
             <FoodButton
               key={answer.label}
               onClick={() => {
-                setTimeout(() => {
-                  router.push(`/quiz/${answer.nextQuestion}`);
-                }, 300);
+                saveAnswer(answer.nextQuestion, answer);
               }}
             >
               {answer.label}
@@ -91,7 +100,7 @@ const FoodButton = styled.button`
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  transition: 0.1s;
+  transition: 0ms;
   :hover {
     border: 3px solid black;
     border-color: rgba(89, 199, 72, 1);
