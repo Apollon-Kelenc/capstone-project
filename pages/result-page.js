@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import Wine_Picture from '/public/wine/Vincent-Dereuil.png';
+import { useRouter } from 'next/router';
 import { Icon } from '@iconify/react';
+import { wine } from '../lib/wine';
 
-export default function ResultPage() {
+export default function ResultPage({ filteredWine }) {
   return (
     <>
       <AppContainer>
@@ -19,27 +21,31 @@ export default function ResultPage() {
         </ImageContainer>
         <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
-          <WineBottleContainer>
-            <Image
-              src={Wine_Picture}
-              alt="Wine Sample Picture"
-              layout={'fill'}
-              objectFit={'cover'}
-            />
-          </WineBottleContainer>
-          <WineName>Vincent Dureuil-Rully Blanc</WineName>
-          <p>Geschmacksprofil:</p>
-          <StyledList>
-            <li>Üppig</li>
-            <li>Trocken</li>
-            <li>Säuerlich</li>
-          </StyledList>
-          <WineType>
-            Art: <strong>Weißwein</strong>
-          </WineType>
-          <p>
-            Passt zu: <strong>Hähnchen</strong>
-          </p>
+          {filteredWine[0].map((wine, index) => (
+            <>
+              <WineBottleContainer>
+                <Image
+                  src={wine.src}
+                  alt="Wine Sample Picture"
+                  layout={'fill'}
+                  objectFit={'cover'}
+                />
+              </WineBottleContainer>
+              <WineName>{wine.name}</WineName>
+              <p>Geschmacksprofil:</p>
+              <StyledList>
+                {wine.tasteProfile.map((taste, index) => (
+                  <li key={index}>{taste}</li>
+                ))}
+              </StyledList>
+              <WineType>
+                Art: <strong>{wine.type}</strong>
+              </WineType>
+              <p>
+                Passt zu: <strong>{wine.pairsWith}</strong>
+              </p>
+            </>
+          ))}
         </ParagraphContainer>
         <Link href="/quiz/start" passHref>
           <RestartQuizButton>
@@ -67,7 +73,7 @@ const ParagraphContainer = styled.div`
 const WineBottleContainer = styled.div`
   height: 170px;
   width: 25%;
-  margin: 0rem 6rem 1rem 6rem;
+  margin: 0rem 8rem 1rem 6rem;
   position: relative;
   overflow: hidden;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);

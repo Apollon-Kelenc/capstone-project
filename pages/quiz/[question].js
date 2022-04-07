@@ -7,9 +7,9 @@ import { quiz } from '../../lib/quiz';
 import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
-const Question = () => {
+const Question = ({ filteredWine, setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
-  const [filteredWine, setFilteredWine] = useState([]);
+  const [completedQuiz, setCompletedQuiz] = useState(false);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
   const router = useRouter();
@@ -18,20 +18,9 @@ const Question = () => {
   const currentQuestion = quiz[question];
   const quizAnswers = quiz.start.answers;
 
-  useEffect(() => {
-    if (chosenAnswers.length < 3) {
-      return;
-    } else {
-      filterWine();
-    }
-  }, []);
-
   function filterWine() {
     chosenAnswers.map(chosenAnswer => {
-      const chosenWine = wine.filter(wine =>
-        wine.tag.some(tag => tag === chosenAnswer.filter)
-      );
-      console.log('chosenWine', chosenWine);
+      const chosenWine = wine.filter(wine => wine.tag.includes(chosenAnswer));
       setFilteredWine([...filteredWine, chosenWine]);
     });
   }
@@ -41,10 +30,6 @@ const Question = () => {
     setTimeout(() => {
       router.push(`/quiz/${nextQuestion}`);
     }, 200);
-  }
-
-  if (!currentQuestion) {
-    return <div>Question not found :(</div>;
   }
   return (
     <>
@@ -57,26 +42,39 @@ const Question = () => {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>{currentQuestion.question}</StyledHeader>
+        <StyledHeader>{currentQuestion?.question}</StyledHeader>
         <Container>
-          {currentQuestion.answers.map(answer => (
-            <FoodButton
-              key={answer.label}
-              onClick={() => {
-                saveAnswer(answer.nextQuestion, answer);
-              }}
-            >
-              {answer.label}
-            </FoodButton>
-          ))}
+          {chosenAnswers.length < 3 ? (
+            currentQuestion.answers.map(answer => (
+              <FoodButton
+                key={answer.label}
+                onClick={() => {
+                  saveAnswer(answer.nextQuestion, answer.filter);
+                }}
+              >
+                {answer.label}
+              </FoodButton>
+            ))
+          ) : (
+            <Link href="/result-page" passHref>
+              <ResultButton onClick={filterWine}>Dein Resultat</ResultButton>
+            </Link>
+          )}
         </Container>
-        <Link href="/landing-page" passHref>
-          <BackArrow>&larr;</BackArrow>
-        </Link>
-        <StyledCounter>
-          Noch <strong>{currentQuestion.remaining}</strong> Fragen bis zum
-          perfekten Wein!
-        </StyledCounter>
+        {chosenAnswers.length === 3 ? (
+          ''
+        ) : (
+          <>
+            {' '}
+            <Link href="/landing-page" passHref>
+              <BackArrow>&larr;</BackArrow>
+            </Link>
+            <StyledCounter>
+              Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
+              perfekten Wein!
+            </StyledCounter>
+          </>
+        )}
       </AppContainer>
     </>
   );
@@ -148,4 +146,24 @@ const ImageContainer = styled.div`
   height: 183px;
   width: 100%;
   position: relative;
+`;
+const ResultButton = styled.button`
+  font-size: 31px;
+  font-weight: 500;
+  margin: 10rem 0rem 0rem 3rem;
+  color: white;
+  background-color: rgba(109, 19, 40);
+  border-radius: 9px;
+  height: 75px;
+  width: 300px;
+  transition: 0ms;
+  border: none;
+  position: relative;
+  z-index: 2;
+  :hover,
+  :active {
+    border-color: rgba(89, 199, 72, 1);
+    color: rgba(89, 199, 72, 1);
+    border: 2px solid rgba(89, 199, 72, 1);
+  }
 `;
