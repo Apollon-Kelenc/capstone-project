@@ -2,10 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
-import Wine_Picture from '/public/wine/Vincent-Dereuil.png';
-import { useRouter } from 'next/router';
 import { Icon } from '@iconify/react';
-import { wine } from '../lib/wine';
 
 export default function ResultPage({ filteredWine }) {
   return (
@@ -28,7 +25,7 @@ export default function ResultPage({ filteredWine }) {
                   src={wine.src}
                   alt="Wine Sample Picture"
                   layout={'fill'}
-                  objectFit={'cover'}
+                  objectFit={'contain'}
                 />
               </WineBottleContainer>
               <WineName>{wine.name}</WineName>
