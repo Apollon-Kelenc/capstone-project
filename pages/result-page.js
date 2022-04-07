@@ -18,7 +18,7 @@ export default function ResultPage({ filteredWine }) {
         </ImageContainer>
         <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
-          {filteredWine[0].map((wine, index) => (
+          {filteredWine.map(wine => (
             <>
               <WineBottleContainer>
                 <Image

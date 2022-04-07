@@ -18,11 +18,17 @@ const Question = ({ filteredWine, setFilteredWine }) => {
   const currentQuestion = quiz[question];
   const quizAnswers = quiz.start.answers;
 
+  const firstFilter = wine.filter(wine => wine.tag.includes(chosenAnswers[0]));
+  const secondFilter = firstFilter.filter(wine =>
+    wine.tag.includes(chosenAnswers[1])
+  );
+  const thirdFilter = secondFilter.filter(wine =>
+    wine.tag.includes(chosenAnswers[2])
+  );
+  console.log(thirdFilter);
+
   function filterWine() {
-    chosenAnswers.map(chosenAnswer => {
-      const chosenWine = wine.filter(wine => wine.tag.includes(chosenAnswer));
-      setFilteredWine([...filteredWine, chosenWine]);
-    });
+    setFilteredWine(thirdFilter);
   }
 
   function saveAnswer(nextQuestion, answer) {
