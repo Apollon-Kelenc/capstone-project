@@ -8,7 +8,6 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
-  const answers = quiz[answers];
   const [chosenAnswers, setChosenAnswers] = useState([]);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
@@ -18,6 +17,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
   const currentQuestion = quiz[question];
 
   const firstFilter = wine.filter(wine => wine.tag.includes(chosenAnswers[0]));
+
   const secondFilter = firstFilter.filter(wine =>
     wine.tag.includes(chosenAnswers[1])
   );
@@ -35,6 +35,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
       router.push(`/quiz/${nextQuestion}`);
     }, 200);
   }
+  const answers = quiz[answers];
   return (
     <>
       <AppContainer>
