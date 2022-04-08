@@ -9,14 +9,12 @@ import { wine } from '../../lib/wine';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
-  const [completedQuiz, setCompletedQuiz] = useState(false);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
   const router = useRouter();
   const { question } = router.query;
 
   const currentQuestion = quiz[question];
-  const quizAnswers = quiz.start.answers;
 
   const firstFilter = wine.filter(wine => wine.tag.includes(chosenAnswers[0]));
   const secondFilter = firstFilter.filter(wine =>
