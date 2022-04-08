@@ -8,7 +8,6 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
-  const answers = quiz[answers];
   const [chosenAnswers, setChosenAnswers] = useState([]);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
