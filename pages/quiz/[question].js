@@ -8,6 +8,7 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
+  const answers = quiz[answers];
   const [chosenAnswers, setChosenAnswers] = useState([]);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
@@ -23,7 +24,6 @@ const Question = ({ filteredWine, setFilteredWine }) => {
   const thirdFilter = secondFilter.filter(wine =>
     wine.tag.includes(chosenAnswers[2])
   );
-  console.log(thirdFilter);
 
   function filterWine() {
     setFilteredWine(thirdFilter);
@@ -69,7 +69,6 @@ const Question = ({ filteredWine, setFilteredWine }) => {
           ''
         ) : (
           <>
-            {' '}
             <Link href="/landing-page" passHref>
               <BackArrow>&larr;</BackArrow>
             </Link>
