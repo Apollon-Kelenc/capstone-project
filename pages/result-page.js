@@ -70,7 +70,7 @@ const ParagraphContainer = styled.div`
 const WineBottleContainer = styled.div`
   height: 170px;
   width: 25%;
-  margin: 0rem 5rem 1.5rem;
+  margin: 0rem 8rem 1.5rem;
   position: relative;
   overflow: hidden;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
