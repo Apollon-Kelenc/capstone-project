@@ -8,6 +8,7 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
+  const answers = quiz[answers];
   const [chosenAnswers, setChosenAnswers] = useState([]);
   console.log('chosenAnswers', chosenAnswers);
   console.log('filteredWine', filteredWine);
@@ -35,7 +36,6 @@ const Question = ({ filteredWine, setFilteredWine }) => {
       router.push(`/quiz/${nextQuestion}`);
     }, 200);
   }
-  const answers = quiz[answers];
   return (
     <>
       <AppContainer>
@@ -50,7 +50,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
         <StyledHeader>{currentQuestion?.question}</StyledHeader>
         <Container>
           {chosenAnswers.length < 3 ? (
-            currentQuestion.answers.map(answer => (
+            currentQuestion?.answers.map(answer => (
               <FoodButton
                 key={answer.label}
                 onClick={() => {

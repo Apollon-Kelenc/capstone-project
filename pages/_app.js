@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  const [filteredWine, setFilteredWine] = useState('');
+  const [filteredWine, setFilteredWine] = useState([]);
 
   return (
     <Component
