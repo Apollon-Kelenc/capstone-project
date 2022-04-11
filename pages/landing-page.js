@@ -76,7 +76,6 @@ const StartQuizButton = styled.button`
   border-radius: 9px;
   height: 75px;
   width: 300px;
-  transition: 0ms;
   border: none;
   position: relative;
   z-index: 2;
