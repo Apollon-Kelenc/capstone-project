@@ -1,18 +1,39 @@
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { quiz } from '../../lib/quiz';
 import header_picture from '/public/header-picture.jpeg';
+import { wine } from '../../lib/wine';
 
-const Question = () => {
+const Question = ({ filteredWine, setFilteredWine }) => {
+  const [chosenAnswers, setChosenAnswers] = useState([]);
+  console.log('chosenAnswers', chosenAnswers);
+  console.log('filteredWine', filteredWine);
   const router = useRouter();
   const { question } = router.query;
 
   const currentQuestion = quiz[question];
 
-  if (!currentQuestion) {
-    return <div>Question not found :(</div>;
+  const firstFilter = wine.filter(wine => wine.tag.includes(chosenAnswers[0]));
+
+  const secondFilter = firstFilter.filter(wine =>
+    wine.tag.includes(chosenAnswers[1])
+  );
+  const thirdFilter = secondFilter.filter(wine =>
+    wine.tag.includes(chosenAnswers[2])
+  );
+
+  function filterWine() {
+    setFilteredWine(thirdFilter);
+  }
+
+  function saveAnswer(nextQuestion, answer) {
+    setChosenAnswers([...chosenAnswers, answer]);
+    setTimeout(() => {
+      router.push(`/quiz/${nextQuestion}`);
+    }, 200);
   }
   return (
     <>
@@ -25,28 +46,38 @@ const Question = () => {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>{currentQuestion.question}</StyledHeader>
+        <StyledHeader>{currentQuestion?.question}</StyledHeader>
         <Container>
-          {currentQuestion.answers.map(answer => (
-            <FoodButton
-              key={answer.label}
-              onClick={() => {
-                setTimeout(() => {
-                  router.push(`/quiz/${answer.nextQuestion}`);
-                }, 200);
-              }}
-            >
-              {answer.label}
-            </FoodButton>
-          ))}
+          {chosenAnswers.length < 3 ? (
+            currentQuestion?.answers.map(answer => (
+              <FoodButton
+                key={answer.label}
+                onClick={() => {
+                  saveAnswer(answer.nextQuestion, answer.filter);
+                }}
+              >
+                {answer.label}
+              </FoodButton>
+            ))
+          ) : (
+            <Link href="/result-page" passHref>
+              <ResultButton onClick={filterWine}>Dein Resultat</ResultButton>
+            </Link>
+          )}
         </Container>
-        <Link href="/landing-page" passHref>
-          <BackArrow>&larr;</BackArrow>
-        </Link>
-        <StyledCounter>
-          Noch <strong>{currentQuestion.remaining}</strong> Fragen bis zum
-          perfekten Wein!
-        </StyledCounter>
+        {chosenAnswers.length === 3 ? (
+          ''
+        ) : (
+          <>
+            <Link href="/landing-page" passHref>
+              <BackArrow>&larr;</BackArrow>
+            </Link>
+            <StyledCounter>
+              Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
+              perfekten Wein!
+            </StyledCounter>
+          </>
+        )}
       </AppContainer>
     </>
   );
@@ -70,9 +101,9 @@ const FoodButton = styled.button`
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  transition: 0s;
+  transition: 0ms;
   :hover {
-    border: 3px solid;
+    border: 3px solid black;
     border-color: rgba(89, 199, 72, 1);
   }
 `;
@@ -82,7 +113,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background: rgba(94, 91, 91);
+  background-color: rgba(94, 91, 91);
 `;
 
 const BackArrow = styled.button`
@@ -105,7 +136,6 @@ const StyledHeader = styled.h1`
   margin: 2rem 2rem;
   font-size: 27px;
   font-weight: 500;
-  color: white;
 `;
 
 const StyledCounter = styled.div`
@@ -119,4 +149,24 @@ const ImageContainer = styled.div`
   height: 183px;
   width: 100%;
   position: relative;
+`;
+const ResultButton = styled.button`
+  font-size: 31px;
+  font-weight: 500;
+  margin: 10rem 0rem 0rem 3rem;
+  color: white;
+  background-color: rgba(109, 19, 40);
+  border-radius: 9px;
+  height: 75px;
+  width: 300px;
+  transition: 0ms;
+  border: none;
+  position: relative;
+  z-index: 2;
+  :hover,
+  :active {
+    border-color: rgba(89, 199, 72, 1);
+    color: rgba(89, 199, 72, 1);
+    border: 2px solid rgba(89, 199, 72, 1);
+  }
 `;

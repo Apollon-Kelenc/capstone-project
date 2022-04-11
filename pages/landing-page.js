@@ -34,7 +34,6 @@ export default function LandingPage() {
 }
 const AppContainer = styled.div`
   height: 100vh;
-  background-color: black;
 `;
 
 const StyledAppName = styled.h1`
@@ -77,7 +76,6 @@ const StartQuizButton = styled.button`
   border-radius: 9px;
   height: 75px;
   width: 300px;
-  transition: 0.1s;
   border: none;
   position: relative;
   z-index: 2;
