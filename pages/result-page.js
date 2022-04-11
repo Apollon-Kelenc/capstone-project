@@ -68,7 +68,7 @@ const ParagraphContainer = styled.div`
 `;
 
 const WineBottleContainer = styled.div`
-  height: 170px;
+  height: 200px;
   width: 4rem;
   margin: 0rem 8.5rem 1.5rem;
   position: relative;
@@ -95,7 +95,6 @@ const ImageContainer = styled.div`
   height: 183px;
   width: 100%;
   position: relative;
-  border: none;
 `;
 
 const AppContainer = styled.div`

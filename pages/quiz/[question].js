@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { quiz } from '../../lib/quiz';
 import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
+import result_picture from '/public/result-picture.jpeg';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
@@ -36,50 +37,57 @@ const Question = ({ filteredWine, setFilteredWine }) => {
     }, 200);
   }
   return (
-    <>
-      <AppContainer>
-        <ImageContainer>
-          <Image
-            src={header_picture}
-            alt="wine picture"
-            layout={'fill'}
-            objectFit={'cover'}
-          />
-        </ImageContainer>
-        <StyledHeader>{currentQuestion?.question}</StyledHeader>
-        <Container>
-          {chosenAnswers.length < 3 ? (
-            currentQuestion?.answers.map(answer => (
-              <FoodButton
-                key={answer.label}
-                onClick={() => {
-                  saveAnswer(answer.nextQuestion, answer.filter);
-                }}
-              >
-                {answer.label}
-              </FoodButton>
-            ))
-          ) : (
+    <AppContainer>
+      <ImageContainer>
+        <Image
+          src={header_picture}
+          alt="wine picture"
+          layout={'fill'}
+          objectFit={'cover'}
+        />
+      </ImageContainer>
+      <StyledHeader>{currentQuestion?.question}</StyledHeader>
+      <Container>
+        {chosenAnswers.length < 3 ? (
+          currentQuestion?.answers.map(answer => (
+            <FoodButton
+              key={answer.label}
+              onClick={() => {
+                saveAnswer(answer.nextQuestion, answer.filter);
+              }}
+            >
+              {answer.label}
+            </FoodButton>
+          ))
+        ) : (
+          <>
+            <Image
+              src={result_picture}
+              alt="wine picture"
+              layout={'fill'}
+              objectFit={'cover'}
+            />
             <Link href="/result-page" passHref>
               <ResultButton onClick={filterWine}>Dein Resultat</ResultButton>
             </Link>
-          )}
-        </Container>
-        {chosenAnswers.length === 3 ? (
-          ''
-        ) : (
-          <>
-            <StyledCounter>
-              Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
-              perfekten Wein!
-            </StyledCounter>
-            <Link href="/landing-page" passHref>
-              <BackArrow>&larr;</BackArrow>
-            </Link>
           </>
         )}
-      </AppContainer>
-    </>
+      </Container>
+      {chosenAnswers.length === 3 ? (
+        ''
+      ) : (
+        <>
+          <StyledCounter>
+            Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
+            perfekten Wein!
+          </StyledCounter>
+          <Link href="/landing-page" passHref>
+            <BackArrow>&larr;</BackArrow>
+          </Link>
+          <p>Back</p>
+        </>
+      )}
+    </AppContainer>
   );
 };
 
@@ -114,19 +122,23 @@ const AppContainer = styled.div`
 `;
 
 const BackArrow = styled.button`
-  position: fixed;
-  bottom: 9rem;
   background-color: rgba(255, 255, 236, 1);
+  margin-top: 4rem;
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
   font-size: 40px;
   padding-bottom: 5px;
   color: black;
-  transition: 0ms;
   :hover {
     color: red;
   }
+`;
+
+const WineGlasContainer = styled.div`
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 `;
 
 const StyledHeader = styled.h1`
@@ -137,10 +149,9 @@ const StyledHeader = styled.h1`
 `;
 
 const StyledCounter = styled.div`
-  position: fixed;
   color: white;
-  bottom: 4.5rem;
   font-size: 19px;
+  margin-top: 3rem;
 `;
 
 const ImageContainer = styled.div`
@@ -151,12 +162,12 @@ const ImageContainer = styled.div`
 const ResultButton = styled.button`
   font-size: 31px;
   font-weight: 500;
-  margin: 10rem 0rem 0rem 3rem;
+  margin: 10rem 4rem 0rem 4rem;
   color: white;
   background-color: rgba(109, 19, 40);
   border-radius: 9px;
   height: 75px;
-  width: 300px;
+  width: 250px;
   transition: 0ms;
   border: none;
   position: relative;
