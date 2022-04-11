@@ -69,13 +69,13 @@ const Question = ({ filteredWine, setFilteredWine }) => {
           ''
         ) : (
           <>
-            <Link href="/landing-page" passHref>
-              <BackArrow>&larr;</BackArrow>
-            </Link>
             <StyledCounter>
               Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
               perfekten Wein!
             </StyledCounter>
+            <Link href="/landing-page" passHref>
+              <BackArrow>&larr;</BackArrow>
+            </Link>
           </>
         )}
       </AppContainer>
@@ -88,23 +88,20 @@ export default Question;
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 5px;
-  row-gap: 20px;
+  gap: 10px;
   justify-items: center;
 `;
 
 const FoodButton = styled.button`
-  width: 90%;
+  width: 100%;
   padding: 35px;
   background-color: rgba(255, 255, 236, 1);
   border-radius: 10px;
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  transition: 0ms;
   :hover {
-    border: 3px solid black;
-    border-color: rgba(89, 199, 72, 1);
+    background-color: rgba(200, 200, 200, 1);
   }
 `;
 
@@ -136,6 +133,7 @@ const StyledHeader = styled.h1`
   margin: 2rem 2rem;
   font-size: 27px;
   font-weight: 500;
+  color: white;
 `;
 
 const StyledCounter = styled.div`

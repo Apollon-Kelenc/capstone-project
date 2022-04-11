@@ -95,6 +95,7 @@ const ImageContainer = styled.div`
   height: 183px;
   width: 100%;
   position: relative;
+  border: none;
 `;
 
 const AppContainer = styled.div`
