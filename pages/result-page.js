@@ -80,6 +80,7 @@ const WineName = styled.p`
   font-size: 20px;
   margin-bottom: 1rem;
   font-weight: 700;
+  text-decoration: none;
 `;
 
 const WineType = styled.p`
@@ -116,7 +117,7 @@ const RestartQuizButton = styled.button`
   background-color: rgba(32, 32, 36, 1);
   border: 0.5px solid white;
   border-radius: 9px;
-  height: 75px;
+  height: 60px;
   width: auto;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
