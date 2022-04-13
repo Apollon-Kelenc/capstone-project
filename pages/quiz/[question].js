@@ -213,12 +213,12 @@ const StyledQuizButton = styled.button`
     padding-top: 3px;
   }
 `;
-
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 45px;
   color: #8a98a5;
   border: none;
+  margin-top: 5px;
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
@@ -231,6 +231,7 @@ const StyledBarrelButton = styled.button`
   font-size: 45px;
   color: #8a98a5;
   border: none;
+  margin-top: 5px;
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
