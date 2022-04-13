@@ -20,30 +20,45 @@ export default function BookmarkPage({ filteredWine }) {
         </ImageContainer>
         <StyledHeader>Von dir Ausgesucht</StyledHeader>
         <WineCard>
-          <WinePictureContainer>
-            <Image
-              src={example_picture}
-              alt="wine picture"
-              layout={'fill'}
-              objectFit={'contain'}
-            />
-          </WinePictureContainer>
-          <WineName>Acquesi Asti</WineName>
           <WineInformation>
-            <p>Pasta</p>
-            <p>Pasta</p>
-            <p>Pasta</p>
-            <p>Pasta</p>
+            <WinePictureContainer>
+              <Image
+                src={example_picture}
+                alt="wine picture"
+                layout={'responsive'}
+              />
+            </WinePictureContainer>
+            <WineName>
+              <li>Acquesi Asti</li>
+              <li>Art:Weißwein</li>
+              <li>Passt zu: Pilze</li>
+            </WineName>
           </WineInformation>
+          <WineTasteProfile>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+          </WineTasteProfile>
         </WineCard>
         <NavBar>
-          <StyledQuizButton>Q</StyledQuizButton>
-          <div>
-            <Icon icon="emojione:wine-glass" width="43" height="43" />
-          </div>
-          <div>
-            <Icon icon="tabler:barrel" color="#8a98a5" width="47" height="47" />
-          </div>
+          <Link href="/landing-page" passHref>
+            <StyledQuizButton>Q</StyledQuizButton>
+          </Link>
+          <StyledWineGlasButton>
+            <Link href="/bookmark-page" passHref>
+              <Icon icon="emojione:wine-glass" width="43" height="43" />
+            </Link>
+          </StyledWineGlasButton>
+          <StyledBarrelButton>
+            <Link href="/result-page" passHref>
+              <Icon
+                icon="tabler:barrel"
+                color="#8a98a5"
+                width="47"
+                height="47"
+              />
+            </Link>
+          </StyledBarrelButton>
         </NavBar>
       </AppContainer>
     </>
@@ -51,7 +66,7 @@ export default function BookmarkPage({ filteredWine }) {
 }
 
 const NavBar = styled.footer`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   flex-direction: row;
@@ -71,6 +86,31 @@ const StyledQuizButton = styled.button`
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
+    padding-top: 3px;
+  }
+`;
+
+const StyledWineGlasButton = styled.button`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  color: #8a98a5;
+  border: none;
+  background-color: rgba(31, 31, 35, 1);
+  :hover {
+    border-bottom: 3px solid white;
+    padding-top: 3px;
+  }
+`;
+
+const StyledBarrelButton = styled.button`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  color: #8a98a5;
+  border: none;
+  background-color: rgba(31, 31, 35, 1);
+  :hover {
+    border-bottom: 3px solid white;
+    padding-top: 3px;
   }
 `;
 const StyledHeader = styled.h1`
@@ -88,29 +128,26 @@ const WineCard = styled.div`
 `;
 
 const WinePictureContainer = styled.div`
-  height: 160px;
-  width: 4rem;
-  margin: 1rem 0rem 0rem 2rem;
-  position: relative;
-  border: 2px solid black;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
+  width: 12%;
+  margin: 30px;
 `;
 
-const WineName = styled.p`
-  margin: 1rem 0rem 0rem 7rem;
-  padding-bottom: 2rem;
-  font-size: 20px;
+const WineName = styled.ul`
+  margin: 3rem;
+  font-size: 18px;
   font-weight: 700;
+  list-style-type: none;
 `;
 
-const WineInformation = styled.p`
+const WineTasteProfile = styled.p`
   position: relative;
   align-self: flex-end;
   display: flex;
   justify-content: space-evenly;
-  list-style-type: none;
 `;
-
+const WineInformation = styled.div`
+  display: flex;
+`;
 const ImageContainer = styled.div`
   height: 183px;
   width: 100%;

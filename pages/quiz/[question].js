@@ -7,11 +7,11 @@ import { quiz } from '../../lib/quiz';
 import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 import result_picture from '/public/result-picture.jpeg';
+import { Icon } from '@iconify/react';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
-  console.log('chosenAnswers', chosenAnswers);
-  console.log('filteredWine', filteredWine);
+
   const router = useRouter();
   const { question } = router.query;
 
@@ -84,9 +84,24 @@ const Question = ({ filteredWine, setFilteredWine }) => {
           <Link href="/landing-page" passHref>
             <BackArrow>&larr;</BackArrow>
           </Link>
-          <p>Back</p>
+          <p>Zurück</p>
         </>
       )}
+      <NavBar>
+        <Link href="/landing-page" passHref>
+          <StyledQuizButton>Q</StyledQuizButton>
+        </Link>
+        <StyledWineGlasButton>
+          <Link href="/bookmark-page" passHref>
+            <Icon icon="emojione:wine-glass" width="43" height="43" />
+          </Link>
+        </StyledWineGlasButton>
+        <StyledBarrelButton>
+          <Link href="/result-page" passHref>
+            <Icon icon="tabler:barrel" color="#8a98a5" width="47" height="47" />
+          </Link>
+        </StyledBarrelButton>
+      </NavBar>
     </AppContainer>
   );
 };
@@ -123,7 +138,7 @@ const AppContainer = styled.div`
 
 const BackArrow = styled.button`
   background-color: rgba(255, 255, 236, 1);
-  margin-top: 4rem;
+  margin-top: 1.5rem;
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
@@ -133,12 +148,6 @@ const BackArrow = styled.button`
   :hover {
     color: red;
   }
-`;
-
-const WineGlasContainer = styled.div`
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
 `;
 
 const StyledHeader = styled.h1`
@@ -177,5 +186,54 @@ const ResultButton = styled.button`
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
     border: 2px solid rgba(89, 199, 72, 1);
+  }
+`;
+
+const NavBar = styled.footer`
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 4.5rem;
+  gap: 30px;
+  background-color: rgba(31, 31, 35, 1);
+`;
+const StyledQuizButton = styled.button`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  padding-bottom: 14px;
+  color: #8a98a5;
+  border: none;
+  background-color: rgba(31, 31, 35, 1);
+  :hover {
+    border-bottom: 3px solid white;
+    padding-top: 3px;
+  }
+`;
+
+const StyledWineGlasButton = styled.button`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  color: #8a98a5;
+  border: none;
+  background-color: rgba(31, 31, 35, 1);
+  :hover {
+    border-bottom: 3px solid white;
+    padding-top: 3px;
+  }
+`;
+
+const StyledBarrelButton = styled.button`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  color: #8a98a5;
+  border: none;
+  background-color: rgba(31, 31, 35, 1);
+  :hover {
+    border-bottom: 3px solid white;
+    padding-top: 3px;
   }
 `;
