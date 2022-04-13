@@ -44,13 +44,18 @@ export default function ResultPage({ filteredWine }) {
             </>
           ))}
         </ParagraphContainer>
-        <Link href="/quiz/start" passHref>
-          <RestartQuizButton>
-            Neue Suche
-            <Icon icon="codicon:debug-restart" />
-          </RestartQuizButton>
-        </Link>
-        <NavBar>
+        <ButtonsCointainer>
+          <Link href="/quiz/start" passHref>
+            <RestartQuizButton>
+              Neue Suche
+              <Icon icon="codicon:debug-restart" />
+            </RestartQuizButton>
+          </Link>
+          <SaveWineButton>
+            <Icon icon="emojione:wine-glass" width="30" height="30" />
+          </SaveWineButton>
+        </ButtonsCointainer>
+        {/* <NavBar>
           <Link href="/landing-page" passHref>
             <StyledQuizButton>Q</StyledQuizButton>
           </Link>
@@ -69,7 +74,7 @@ export default function ResultPage({ filteredWine }) {
               />
             </Link>
           </StyledBarrelButton>
-        </NavBar>
+        </NavBar> */}
       </AppContainer>
     </>
   );
@@ -100,7 +105,6 @@ const WineName = styled.p`
   font-size: 20px;
   margin-bottom: 1rem;
   font-weight: 700;
-  text-decoration: none;
 `;
 
 const WineType = styled.p`
@@ -127,6 +131,28 @@ const AppContainer = styled.div`
 `;
 
 const RestartQuizButton = styled.button`
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 1.5rem;
+  padding: 1rem;
+  color: white;
+  background-color: rgba(32, 32, 36, 1);
+  border: 0.5px solid white;
+  border-radius: 9px;
+  height: 60px;
+  width: auto;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  :hover,
+  :active {
+    border-color: rgba(89, 199, 72, 1);
+    color: rgba(89, 199, 72, 1);
+  }
+`;
+
+const SaveWineButton = styled.button`
   display: flex;
   align-items: center;
   font-size: 31px;
@@ -197,4 +223,8 @@ const StyledBarrelButton = styled.button`
     border-bottom: 3px solid white;
     padding-top: 3px;
   }
+`;
+
+const ButtonsCointainer = styled.div`
+  display: flex;
 `;
