@@ -10,8 +10,8 @@ function MyApp({ Component, pageProps }) {
       {...pageProps}
       filteredWine={filteredWine}
       setFilteredWine={setFilteredWine}
-      saveWine={savedWine}
-      setSaveWine={setSavedWine}
+      savedWine={savedWine}
+      setSavedWine={setSavedWine}
     />
   );
 }
