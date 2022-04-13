@@ -6,7 +6,15 @@ import { Icon } from '@iconify/react';
 import { wine } from '../lib/wine';
 import example_picture from '/public/wine/Acquesi Asti.png';
 
-export default function BookmarkPage({ filteredWine }) {
+export default function BookmarkPage({
+  filteredWine,
+  setSavedWine,
+  savedWine,
+}) {
+  // function saveWine() {
+  //   setSavedWine(filteredWine);
+  //   alert(savedWine[0].tasteProfile);
+  // }
   return (
     <>
       <AppContainer>
@@ -29,15 +37,13 @@ export default function BookmarkPage({ filteredWine }) {
               />
             </WinePictureContainer>
             <WineName>
-              <li>Acquesi Asti</li>
-              <li>Art:Weißwein</li>
-              <li>Passt zu: Pilze</li>
+              <li>{savedWine[0].name}</li>
+              <li>Art:{savedWine[0].type}</li>
+              <li>Passt zu:{savedWine[0].pairsWith}</li>
             </WineName>
           </WineInformation>
           <WineTasteProfile>
-            <p>Pasta</p>
-            <p>Pasta</p>
-            <p>Pasta</p>
+            <p>{savedWine[0].tasteProfile}</p>
           </WineTasteProfile>
         </WineCard>
         <NavBar>

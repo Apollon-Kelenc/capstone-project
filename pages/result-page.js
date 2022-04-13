@@ -7,7 +7,9 @@ import { Icon } from '@iconify/react';
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
     setSavedWine(filteredWine);
+    // alert(savedWine[0].type);
   }
+  console.log(savedWine);
   return (
     <>
       <AppContainer>
@@ -54,15 +56,11 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
               <Icon icon="codicon:debug-restart" />
             </RestartQuizButton>
           </Link>
-          <SaveWineButton
-            onClick={() => {
-              saveWine();
-            }}
-          >
+          <SaveWineButton onClick={saveWine}>
             <Icon icon="emojione:wine-glass" width="30" height="30" />
           </SaveWineButton>
         </ButtonsCointainer>
-        {/* <NavBar>
+        <NavBar>
           <Link href="/landing-page" passHref>
             <StyledQuizButton>Q</StyledQuizButton>
           </Link>
@@ -81,7 +79,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
               />
             </Link>
           </StyledBarrelButton>
-        </NavBar> */}
+        </NavBar>
       </AppContainer>
     </>
   );
