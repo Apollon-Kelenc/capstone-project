@@ -4,7 +4,11 @@ import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
 
-export default function ResultPage({ filteredWine }) {
+export default function ResultPage({ filteredWine, saveWine }) {
+  function savedWine() {
+    setSaveWine(saveWine);
+  }
+  console.log(saveWine);
   return (
     <>
       <AppContainer>
@@ -51,7 +55,7 @@ export default function ResultPage({ filteredWine }) {
               <Icon icon="codicon:debug-restart" />
             </RestartQuizButton>
           </Link>
-          <SaveWineButton>
+          <SaveWineButton onClick={savedWine}>
             <Icon icon="emojione:wine-glass" width="30" height="30" />
           </SaveWineButton>
         </ButtonsCointainer>
