@@ -3,18 +3,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
-import { wine } from '../lib/wine';
-import example_picture from '/public/wine/Acquesi Asti.png';
 
-export default function BookmarkPage({
-  filteredWine,
-  setSavedWine,
-  savedWine,
-}) {
-  // function saveWine() {
-  //   setSavedWine(filteredWine);
-  //   alert(savedWine[0].tasteProfile);
-  // }
+export default function BookmarkPage({ savedWine }) {
   return (
     <>
       <AppContainer>
@@ -31,20 +21,34 @@ export default function BookmarkPage({
           <WineInformation>
             <WinePictureContainer>
               <Image
-                src={example_picture}
+                src={savedWine[0].src}
                 alt="wine picture"
                 layout={'responsive'}
+                height={55}
+                width={15}
               />
             </WinePictureContainer>
             <WineName>
               <li>{savedWine[0].name}</li>
-              <li>Art:{savedWine[0].type}</li>
-              <li>Passt zu:{savedWine[0].pairsWith}</li>
+              <WineType>Art:</WineType>
+              <li>{savedWine[0].type}</li>
+              <li>
+                <WineFitsTo>Passt zu:</WineFitsTo>
+                {savedWine[0].pairsWith}
+              </li>
+              <WineTasteProfileContainer>
+                <WineTasteProfile>
+                  {savedWine[0].tasteProfile[0]}
+                </WineTasteProfile>
+                <WineTasteProfile>
+                  {savedWine[0].tasteProfile[1]}
+                </WineTasteProfile>
+                <WineTasteProfile>
+                  {savedWine[0].tasteProfile[2]}
+                </WineTasteProfile>
+              </WineTasteProfileContainer>
             </WineName>
           </WineInformation>
-          <WineTasteProfile>
-            <p>{savedWine[0].tasteProfile}</p>
-          </WineTasteProfile>
         </WineCard>
         <NavBar>
           <Link href="/landing-page" passHref>
@@ -95,7 +99,15 @@ const StyledQuizButton = styled.button`
     padding-top: 3px;
   }
 `;
+const WineFitsTo = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
 
+const WineType = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 45px;
@@ -131,27 +143,33 @@ const StyledHeader = styled.h1`
 const WineCard = styled.div`
   width: 95%;
   height: fit-content;
-  border: 2px rgba(31, 31, 35, 1) solid;
-  border-radius: 20px;
+  border: 1px #8a98a5 solid;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 236, 1);
 `;
 
 const WinePictureContainer = styled.div`
-  width: 12%;
-  margin: 30px;
+  width: 2.7rem;
+  margin: 25px;
 `;
 
 const WineName = styled.ul`
-  margin: 3rem;
+  margin-top: 1.5rem;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
   list-style-type: none;
 `;
 
-const WineTasteProfile = styled.p`
+const WineTasteProfileContainer = styled.p`
   position: relative;
   align-self: flex-end;
   display: flex;
-  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 1rem;
+`;
+
+const WineTasteProfile = styled.div`
+  font-weight: 500;
 `;
 const WineInformation = styled.div`
   display: flex;
