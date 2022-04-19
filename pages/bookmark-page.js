@@ -134,7 +134,7 @@ const StyledBarrelButton = styled.button`
   }
 `;
 const StyledHeader = styled.h1`
-  margin: 2rem 2rem;
+  margin: 1rem;
   font-size: 27px;
   font-weight: 500;
   color: white;

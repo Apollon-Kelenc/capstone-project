@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
-import landing_picture from '../public/landing-page-background.png';
+import landing_picture from '../public/new-landing-page-picture.png';
 
 export default function LandingPage() {
   return (
@@ -37,9 +37,9 @@ const AppContainer = styled.div`
 `;
 
 const StyledAppName = styled.h1`
-  padding: 11rem 0rem 0rem 0rem;
+  padding: 10rem 0rem 0rem 0rem;
   margin: 0rem 0rem 1rem 1rem;
-  font-size: 50px;
+  font-size: 48px;
   font-weight: lighter;
   font-family: 'Trochut';
   color: white;
@@ -54,6 +54,7 @@ const AppInfo = styled.p`
 `;
 const ParagraphContainer = styled.div`
   margin-top: 50px;
+  font-size: 16;
   padding: 0rem 8rem 0rem 1rem;
   color: white;
   position: relative;
@@ -68,14 +69,14 @@ const ImageContainer = styled.div`
 `;
 
 const StartQuizButton = styled.button`
-  font-size: 31px;
+  font-size: 30px;
   font-weight: 500;
-  margin: 20rem 0rem 0rem 3rem;
+  margin: 10rem 0rem 0rem 4.5rem;
   color: white;
   background-color: rgba(109, 19, 40);
   border-radius: 9px;
-  height: 75px;
-  width: 300px;
+  height: 65px;
+  width: 235px;
   border: none;
   position: relative;
   z-index: 2;

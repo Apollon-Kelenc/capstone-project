@@ -93,12 +93,12 @@ const Question = ({ filteredWine, setFilteredWine }) => {
         </Link>
         <StyledWineGlasButton>
           <Link href="/bookmark-page" passHref>
-            <Icon icon="emojione:wine-glass" width="43" height="43" />
+            <Icon icon="emojione:wine-glass" width="41" height="41" />
           </Link>
         </StyledWineGlasButton>
         <StyledBarrelButton>
           <Link href="/result-page" passHref>
-            <Icon icon="tabler:barrel" color="#8a98a5" width="47" height="47" />
+            <Icon icon="tabler:barrel" color="#8a98a5" width="45" height="45" />
           </Link>
         </StyledBarrelButton>
       </NavBar>
@@ -117,7 +117,7 @@ const Container = styled.div`
 
 const FoodButton = styled.button`
   width: 100%;
-  padding: 35px;
+  padding: 30px 20px;
   background-color: rgba(255, 255, 236, 1);
   border-radius: 10px;
   font-size: 16px;
@@ -138,11 +138,11 @@ const AppContainer = styled.div`
 
 const BackArrow = styled.button`
   background-color: rgba(255, 255, 236, 1);
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
-  font-size: 40px;
+  height: 56px;
+  width: 56px;
+  font-size: 30px;
   padding-bottom: 5px;
   color: black;
   :hover {
@@ -151,33 +151,32 @@ const BackArrow = styled.button`
 `;
 
 const StyledHeader = styled.h1`
-  margin: 2rem 2rem;
-  font-size: 27px;
+  margin: 1.5rem 0em 1rem 0rem;
+  font-size: 24px;
   font-weight: 500;
   color: white;
 `;
 
 const StyledCounter = styled.div`
   color: white;
-  font-size: 19px;
-  margin-top: 3rem;
+  font-size: 17px;
+  margin-top: 1rem;
 `;
 
 const ImageContainer = styled.div`
-  height: 183px;
+  height: 145px;
   width: 100%;
   position: relative;
 `;
 const ResultButton = styled.button`
-  font-size: 31px;
+  font-size: 30px;
   font-weight: 500;
-  margin: 10rem 4rem 0rem 4rem;
+  margin: 8.5rem 0rem 0rem 4.5rem;
   color: white;
   background-color: rgba(109, 19, 40);
   border-radius: 9px;
-  height: 75px;
-  width: 250px;
-  transition: 0ms;
+  height: 65px;
+  width: 230px;
   border: none;
   position: relative;
   z-index: 2;
@@ -197,14 +196,14 @@ const NavBar = styled.footer`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 4.5rem;
+  height: 59px;
   gap: 30px;
   background-color: rgba(31, 31, 35, 1);
 `;
 const StyledQuizButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
-  padding-bottom: 14px;
+  font-size: 42px;
+  padding-bottom: 9px;
   color: #8a98a5;
   border: none;
   background-color: rgba(31, 31, 35, 1);
@@ -215,7 +214,6 @@ const StyledQuizButton = styled.button`
 `;
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
   color: #8a98a5;
   border: none;
   margin-top: 5px;
@@ -228,10 +226,9 @@ const StyledWineGlasButton = styled.button`
 
 const StyledBarrelButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
   color: #8a98a5;
   border: none;
-  margin-top: 5px;
+  margin-top: 3px;
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
