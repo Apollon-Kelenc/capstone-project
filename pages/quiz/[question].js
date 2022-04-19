@@ -8,6 +8,7 @@ import header_picture from '/public/header-picture.jpeg';
 import { wine } from '../../lib/wine';
 import result_picture from '/public/result-picture.jpeg';
 import { Icon } from '@iconify/react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Question = ({ filteredWine, setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
@@ -47,10 +48,30 @@ const Question = ({ filteredWine, setFilteredWine }) => {
         />
       </ImageContainer>
       <StyledHeader>{currentQuestion?.question}</StyledHeader>
-      <Container>
-        {chosenAnswers.length < 3 ? (
-          currentQuestion?.answers.map(answer => (
+      {chosenAnswers.length < 3 ? (
+        <Container
+          key={currentQuestion?.question}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+          initial="hidden"
+          animate="show"
+        >
+          {currentQuestion?.answers.map(answer => (
             <FoodButton
+              variants={{
+                hidden: { scale: 0.6, y: -10, opacity: 0 },
+                show: { scale: 1, y: 0, opacity: 1 },
+                selected: { scale: 1.05, y: 0 },
+              }}
+              whileHover={{ scale: 0.95 }}
+              whileTap={{ scale: 1.05 }}
+              animate={
+                answer.filter === chosenAnswers[chosenAnswers.length - 1]
+                  ? 'selected'
+                  : undefined
+              }
               key={answer.label}
               onClick={() => {
                 saveAnswer(answer.nextQuestion, answer.filter);
@@ -58,33 +79,47 @@ const Question = ({ filteredWine, setFilteredWine }) => {
             >
               {answer.label}
             </FoodButton>
-          ))
-        ) : (
-          <>
-            <Image
-              src={result_picture}
-              alt="wine picture"
-              layout={'fill'}
-              objectFit={'cover'}
-            />
-            <Link href="/result-page" passHref>
-              <ResultButton onClick={filterWine}>Dein Resultat</ResultButton>
-            </Link>
-          </>
-        )}
-      </Container>
+          ))}
+        </Container>
+      ) : (
+        <>
+          <Image
+            src={result_picture}
+            alt="wine picture"
+            layout={'fill'}
+            objectFit={'cover'}
+          />
+          <Link href="/result-page" passHref>
+            <ResultButton onClick={filterWine}>Dein Resultat</ResultButton>
+          </Link>
+        </>
+      )}
       {chosenAnswers.length === 3 ? (
         ''
       ) : (
         <>
           <StyledCounter>
-            Noch <strong>{currentQuestion?.remaining}</strong> Fragen bis zum
-            perfekten Wein!
+            Noch{' '}
+            <AnimatePresence>
+              <motion.strong
+                style={{
+                  display: 'inline-block',
+                  padding: '0 0.5ch',
+                  width: '2ch',
+                }}
+                initial={{ y: -20, opacity: 0, position: 'absolute' }}
+                animate={{ y: 0, opacity: 1, position: 'static' }}
+                key={currentQuestion?.remaining}
+              >
+                {currentQuestion?.remaining}
+              </motion.strong>
+            </AnimatePresence>{' '}
+            Fragen bis zum perfekten Wein!
           </StyledCounter>
           <Link href="/landing-page" passHref>
             <BackArrow>&larr;</BackArrow>
           </Link>
-          <p>Zurück</p>
+          <BackText>Zurück</BackText>
         </>
       )}
       <NavBar>
@@ -93,12 +128,12 @@ const Question = ({ filteredWine, setFilteredWine }) => {
         </Link>
         <StyledWineGlasButton>
           <Link href="/bookmark-page" passHref>
-            <Icon icon="emojione:wine-glass" width="41" height="41" />
+            <Icon icon="emojione:wine-glass" width="43" height="43" />
           </Link>
         </StyledWineGlasButton>
         <StyledBarrelButton>
           <Link href="/result-page" passHref>
-            <Icon icon="tabler:barrel" color="#8a98a5" width="45" height="45" />
+            <Icon icon="tabler:barrel" color="#8a98a5" width="47" height="47" />
           </Link>
         </StyledBarrelButton>
       </NavBar>
@@ -108,14 +143,14 @@ const Question = ({ filteredWine, setFilteredWine }) => {
 
 export default Question;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   justify-items: center;
 `;
 
-const FoodButton = styled.button`
+const FoodButton = styled(motion.button)`
   width: 100%;
   padding: 30px 20px;
   background-color: rgba(255, 255, 236, 1);
@@ -123,9 +158,10 @@ const FoodButton = styled.button`
   font-size: 16px;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   color: black;
-  :hover {
-    background-color: rgba(200, 200, 200, 1);
-  }
+`;
+
+const BackText = styled.p`
+  color: white;
 `;
 
 const AppContainer = styled.div`
@@ -133,7 +169,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: rgba(94, 91, 91);
+  background-color: #77818b;
 `;
 
 const BackArrow = styled.button`
@@ -171,7 +207,7 @@ const ImageContainer = styled.div`
 const ResultButton = styled.button`
   font-size: 30px;
   font-weight: 500;
-  margin: 8.5rem 0rem 0rem 4.5rem;
+  margin-top: 8.5rem;
   color: white;
   background-color: rgba(109, 19, 40);
   border-radius: 9px;

@@ -16,7 +16,7 @@ export default function BookmarkPage({ savedWine }) {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Von dir Ausgesucht</StyledHeader>
+        <StyledHeader>Von dir ausgesucht</StyledHeader>
         <WineCard>
           <WineInformation>
             <WinePictureContainer>
@@ -83,14 +83,14 @@ const NavBar = styled.footer`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 4.5rem;
+  height: 59px;
   gap: 30px;
   background-color: rgba(31, 31, 35, 1);
 `;
 const StyledQuizButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
-  padding-bottom: 14px;
+  font-size: 42px;
+  padding-bottom: 9px;
   color: #8a98a5;
   border: none;
   background-color: rgba(31, 31, 35, 1);
@@ -99,18 +99,8 @@ const StyledQuizButton = styled.button`
     padding-top: 3px;
   }
 `;
-const WineFitsTo = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
-const WineType = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
   color: #8a98a5;
   border: none;
   margin-top: 5px;
@@ -123,16 +113,26 @@ const StyledWineGlasButton = styled.button`
 
 const StyledBarrelButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
   color: #8a98a5;
   border: none;
-  margin-top: 5px;
+  margin-top: 3px;
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
     padding-top: 3px;
   }
 `;
+
+const WineFitsTo = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
+
+const WineType = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
+
 const StyledHeader = styled.h1`
   margin: 1rem;
   font-size: 27px;
@@ -175,7 +175,7 @@ const WineInformation = styled.div`
   display: flex;
 `;
 const ImageContainer = styled.div`
-  height: 183px;
+  height: 145px;
   width: 100%;
   position: relative;
 `;
@@ -185,5 +185,5 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: rgba(94, 91, 91);
+  background-color: #77818b;
 `;
