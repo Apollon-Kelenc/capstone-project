@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
+import { SnackbarProvider } from 'notistack';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
@@ -10,70 +11,72 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   console.log(savedWine);
   return (
     <>
-      <AppContainer>
-        <StyledHeader>Deine Empfehlung</StyledHeader>
-        <ParagraphContainer>
-          {filteredWine.map(wine => (
-            <>
-              <WineBottleContainer>
-                <Image
-                  src={wine.src}
-                  alt="Wine Sample Picture"
-                  layout={'fill'}
-                  objectFit={'contain'}
+      <SnackbarProvider>
+        <AppContainer>
+          <StyledHeader>Deine Empfehlung</StyledHeader>
+          <ParagraphContainer>
+            {filteredWine.map(wine => (
+              <>
+                <WineBottleContainer>
+                  <Image
+                    src={wine.src}
+                    alt="Wine Sample Picture"
+                    layout={'fill'}
+                    objectFit={'contain'}
+                  />
+                </WineBottleContainer>
+                <WineName>
+                  {wine.name}
+                  <BuyButton>{wine.url}</BuyButton>
+                </WineName>
+                <p>Geschmacksprofil:</p>
+                <StyledList>
+                  {wine.tasteProfile.map((taste, index) => (
+                    <li key={index}>{taste}</li>
+                  ))}
+                </StyledList>
+                <WineType>
+                  Art: <strong>{wine.type}</strong>
+                </WineType>
+                <p>
+                  Passt zu: <strong>{wine.pairsWith}</strong>
+                </p>
+              </>
+            ))}
+          </ParagraphContainer>
+          <ButtonsCointainer>
+            <Link href="/quiz/start" passHref>
+              <RestartQuizButton>
+                Neue Suche
+                <Icon icon="codicon:debug-restart" />
+              </RestartQuizButton>
+            </Link>
+            <SaveWineButton onClick={saveWine}>
+              <Icon icon="emojione:wine-glass" width="32" height="32" />
+            </SaveWineButton>
+          </ButtonsCointainer>
+          <NavBar>
+            <Link href="/landing-page" passHref>
+              <StyledQuizButton>Q</StyledQuizButton>
+            </Link>
+            <StyledWineGlasButton>
+              <Link href="/bookmark-page" passHref>
+                <Icon icon="emojione:wine-glass" width="43" height="43" />
+              </Link>
+            </StyledWineGlasButton>
+            <StyledBarrelButton>
+              <Link href="/result-page" passHref>
+                <Icon
+                  icon="tabler:barrel"
+                  color="#8a98a5"
+                  width="47"
+                  height="47"
                 />
-              </WineBottleContainer>
-              <WineName>
-                {wine.name}
-                <BuyButton>{wine.url}</BuyButton>
-              </WineName>
-              <p>Geschmacksprofil:</p>
-              <StyledList>
-                {wine.tasteProfile.map((taste, index) => (
-                  <li key={index}>{taste}</li>
-                ))}
-              </StyledList>
-              <WineType>
-                Art: <strong>{wine.type}</strong>
-              </WineType>
-              <p>
-                Passt zu: <strong>{wine.pairsWith}</strong>
-              </p>
-            </>
-          ))}
-        </ParagraphContainer>
-        <ButtonsCointainer>
-          <Link href="/quiz/start" passHref>
-            <RestartQuizButton>
-              Neue Suche
-              <Icon icon="codicon:debug-restart" />
-            </RestartQuizButton>
-          </Link>
-          <SaveWineButton onClick={saveWine}>
-            <Icon icon="emojione:wine-glass" width="32" height="32" />
-          </SaveWineButton>
-        </ButtonsCointainer>
-        <NavBar>
-          <Link href="/landing-page" passHref>
-            <StyledQuizButton>Q</StyledQuizButton>
-          </Link>
-          <StyledWineGlasButton>
-            <Link href="/bookmark-page" passHref>
-              <Icon icon="emojione:wine-glass" width="43" height="43" />
-            </Link>
-          </StyledWineGlasButton>
-          <StyledBarrelButton>
-            <Link href="/result-page" passHref>
-              <Icon
-                icon="tabler:barrel"
-                color="#8a98a5"
-                width="47"
-                height="47"
-              />
-            </Link>
-          </StyledBarrelButton>
-        </NavBar>
-      </AppContainer>
+              </Link>
+            </StyledBarrelButton>
+          </NavBar>
+        </AppContainer>
+      </SnackbarProvider>
     </>
   );
 }

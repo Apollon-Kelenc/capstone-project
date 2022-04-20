@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
+import { SnackbarProvider } from 'notistack';
 
 function MyApp({ Component, pageProps }) {
   const [filteredWine, setFilteredWine] = useState([]);
