@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
+import wine_test_picture from '/public/wine/Acquesi asti.png';
 
-export default function BookmarkPage({ savedWine }) {
+export default function WineCellarPage({ savedWine }) {
   return (
     <>
       <AppContainer>
@@ -16,7 +17,7 @@ export default function BookmarkPage({ savedWine }) {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Von dir ausgesucht</StyledHeader>
+        <StyledHeader>Dein Weinkeller</StyledHeader>
         <WineCard>
           <WineInformation>
             <WinePictureContainer>
@@ -24,29 +25,31 @@ export default function BookmarkPage({ savedWine }) {
                 src={savedWine[0].src}
                 alt="wine picture"
                 layout={'responsive'}
-                height={55}
+                height={50}
                 width={15}
               />
             </WinePictureContainer>
             <WineName>
-              <li>{savedWine[0].name}</li>
-              <WineType>Art:</WineType>
-              <li>{savedWine[0].type}</li>
-              <li>
-                <WineFitsTo>Passt zu:</WineFitsTo>
-                {savedWine[0].pairsWith}
-              </li>
-              <WineTasteProfileContainer>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[0]}
-                </WineTasteProfile>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[1]}
-                </WineTasteProfile>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[2]}
-                </WineTasteProfile>
-              </WineTasteProfileContainer>
+              <p>{savedWine[0].name}</p>
+              <WineButtonsAndAmountContainer>
+                <StyledIncreaseButton>
+                  <Icon
+                    icon="fluent:add-circle-16-regular"
+                    color="#32a852"
+                    width={50}
+                    height={50}
+                  />
+                </StyledIncreaseButton>
+                <p>2</p>
+                <StyledDeacreaseButton>
+                  <Icon
+                    icon="akar-icons:circle-minus"
+                    color="#cd3c28"
+                    width={40}
+                    height={40}
+                  />
+                </StyledDeacreaseButton>
+              </WineButtonsAndAmountContainer>
             </WineName>
           </WineInformation>
         </WineCard>
@@ -60,7 +63,7 @@ export default function BookmarkPage({ savedWine }) {
             </Link>
           </StyledWineGlasButton>
           <StyledBarrelButton>
-            <Link href="/wine-cellar-page" passHref>
+            <Link href="/result-page" passHref>
               <Icon
                 icon="tabler:barrel"
                 color="#8a98a5"
@@ -75,6 +78,31 @@ export default function BookmarkPage({ savedWine }) {
   );
 }
 
+const StyledIncreaseButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
+  border-radius: 50%;
+  margin-right: 2px;
+`;
+
+const StyledDeacreaseButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
+  border-radius: 50%;
+  margin-left: 5px;
+`;
+const WineButtonsAndAmountContainer = styled.div`
+  font-size: 24px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin: 2.5rem 1.5rem 0rem 0rem;
+  gap: 10px;
+`;
 const NavBar = styled.footer`
   position: fixed;
   bottom: 0;
@@ -153,11 +181,12 @@ const WinePictureContainer = styled.div`
   margin: 25px;
 `;
 
-const WineName = styled.ul`
+const WineName = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 1.5rem;
   font-size: 18px;
   font-weight: bold;
-  list-style-type: none;
 `;
 
 const WineTasteProfileContainer = styled.p`
