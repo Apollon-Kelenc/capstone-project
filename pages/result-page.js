@@ -5,7 +5,32 @@ import { Icon } from '@iconify/react';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
-    setSavedWine(filteredWine);
+    if (savedWine !== undefined) {
+      setSavedWine(filteredWine);
+    } else {
+      setSavedWine({
+        name: 'Guerrieri Guerriero del Mare',
+        url: (
+          <a
+            href="https://www.vivino.com/DE/de/guerrieri-guerriero-del-mare/w/7135154"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon
+              icon="el:shopping-cart-sign"
+              color="#862425"
+              width="40px"
+              height="40px"
+            />
+          </a>
+        ),
+        tasteProfile: ['Üppig', 'Trocken', 'Säuerlich'],
+        type: 'Weißwein',
+        pairsWith: 'Thunfisch',
+        tag: ['Seafood', 'Thunfisch', 'Trocken'],
+        src: '/wine/Guerrieri Guerriero del Mare.png',
+      });
+    }
   }
   console.log(savedWine);
   return (
