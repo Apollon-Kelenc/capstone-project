@@ -116,7 +116,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
             </AnimatePresence>{' '}
             Fragen bis zum perfekten Wein!
           </StyledCounter>
-          <Link href="/landing-page" passHref>
+          <Link href="/quiz/start" passHref>
             <BackArrow>&larr;</BackArrow>
           </Link>
           <BackText>Zurück</BackText>
@@ -245,7 +245,7 @@ const StyledQuizButton = styled.button`
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
-    padding-top: 3px;
+    margin-top: 1px;
   }
 `;
 const StyledWineGlasButton = styled.button`

@@ -5,32 +5,7 @@ import { Icon } from '@iconify/react';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
-    if (savedWine !== undefined) {
-      setSavedWine(filteredWine);
-    } else {
-      setSavedWine({
-        name: 'Guerrieri Guerriero del Mare',
-        url: (
-          <a
-            href="https://www.vivino.com/DE/de/guerrieri-guerriero-del-mare/w/7135154"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Icon
-              icon="el:shopping-cart-sign"
-              color="#862425"
-              width="40px"
-              height="40px"
-            />
-          </a>
-        ),
-        tasteProfile: ['Üppig', 'Trocken', 'Säuerlich'],
-        type: 'Weißwein',
-        pairsWith: 'Thunfisch',
-        tag: ['Seafood', 'Thunfisch', 'Trocken'],
-        src: '/wine/Guerrieri Guerriero del Mare.png',
-      });
-    }
+    setSavedWine(filteredWine);
   }
   console.log(savedWine);
   return (
@@ -150,17 +125,11 @@ const AppContainer = styled.div`
 const BuyButton = styled.button`
   margin-left: 1rem;
   background-color: white;
-  height: 41px;
-  width: 41px;
-  border-radius: 20px;
+  height: 42px;
+  width: 42px;
+  border-radius: 21px;
   border: 0.5px solid white;
 `;
-
-// const BuyButton = styled.button`
-//   margin-left: 1rem;
-//   background-color: transparent;
-//   border: none;
-// `;
 
 const RestartQuizButton = styled.button`
   display: flex;
@@ -223,7 +192,7 @@ const StyledQuizButton = styled.button`
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
-    padding-top: 3px;
+    margin-top: 1px;
   }
 `;
 const StyledWineGlasButton = styled.button`

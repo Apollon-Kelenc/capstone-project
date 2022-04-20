@@ -96,7 +96,7 @@ const StyledQuizButton = styled.button`
   background-color: rgba(31, 31, 35, 1);
   :hover {
     border-bottom: 3px solid white;
-    padding-top: 3px;
+    margin-top: 1px;
   }
 `;
 const StyledWineGlasButton = styled.button`
