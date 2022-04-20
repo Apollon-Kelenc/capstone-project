@@ -54,7 +54,6 @@ const AppInfo = styled.p`
 `;
 const ParagraphContainer = styled.div`
   margin-top: 50px;
-  font-size: 16;
   padding: 0rem 8rem 0rem 1rem;
   color: white;
   position: relative;

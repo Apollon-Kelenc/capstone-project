@@ -116,7 +116,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
             </AnimatePresence>{' '}
             Fragen bis zum perfekten Wein!
           </StyledCounter>
-          <Link href="/quiz/start" passHref>
+          <Link href="/landing-page" passHref>
             <BackArrow>&larr;</BackArrow>
           </Link>
           <BackText>Zurück</BackText>
