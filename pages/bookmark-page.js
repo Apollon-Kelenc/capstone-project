@@ -8,23 +8,24 @@ export default function BookmarkPage({ savedWine }) {
   return (
     <>
       <AppContainer>
-        {savedWine.map(wineCard => {
+        <ImageContainer>
+          <Image
+            src={header_picture}
+            alt="wine picture"
+            layout={'fill'}
+            objectFit={'cover'}
+          />
+        </ImageContainer>
+        <StyledHeader>Von dir ausgesucht</StyledHeader>
+        {savedWine?.map(wineCard => {
+          console.log(savedWine);
           return (
             <>
-              <ImageContainer>
-                <Image
-                  src={header_picture}
-                  alt="wine picture"
-                  layout={'fill'}
-                  objectFit={'cover'}
-                />
-              </ImageContainer>
-              <StyledHeader>Von dir ausgesucht</StyledHeader>
               <WineCard>
                 <WineInformation>
                   <WinePictureContainer>
                     <Image
-                      src={savedWine.src}
+                      src={wineCard.src}
                       alt="wine picture"
                       layout={'responsive'}
                       height={55}
@@ -32,22 +33,22 @@ export default function BookmarkPage({ savedWine }) {
                     />
                   </WinePictureContainer>
                   <WineName>
-                    <li>{savedWine.name}</li>
+                    <li>{wineCard.name}</li>
                     <WineType>Art:</WineType>
-                    <li>{savedWine.type}</li>
+                    <li>{wineCard.type}</li>
                     <li>
                       <WineFitsTo>Passt zu:</WineFitsTo>
-                      {savedWine.pairsWith}
+                      {wineCard.pairsWith}
                     </li>
                     <WineTasteProfileContainer>
                       <WineTasteProfile>
-                        {savedWine.tasteProfile[0]}
+                        {wineCard.tasteProfile[0]}
                       </WineTasteProfile>
                       <WineTasteProfile>
-                        {savedWine.tasteProfile[1]}
+                        {wineCard.tasteProfile[1]}
                       </WineTasteProfile>
                       <WineTasteProfile>
-                        {savedWine.tasteProfile[2]}
+                        {wineCard.tasteProfile[2]}
                       </WineTasteProfile>
                     </WineTasteProfileContainer>
                   </WineName>

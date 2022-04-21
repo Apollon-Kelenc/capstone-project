@@ -6,7 +6,7 @@ import { useSnackbar } from 'notistack';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
-    setSavedWine([...savedWine, filteredWine]);
+    setSavedWine([...savedWine, ...filteredWine]);
   }
   const { enqueueSnackbar } = useSnackbar();
 
