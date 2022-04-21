@@ -192,7 +192,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: fit-content;
   background-color: #77818b;
   padding-bottom: 3rem;
+  height: 100vh;
 `;
