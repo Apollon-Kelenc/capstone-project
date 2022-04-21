@@ -4,7 +4,7 @@ import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
 
-export default function WineCellarPage({ savedWine }) {
+export default function WineCellarPage({ filteredWine }) {
   return (
     <>
       <AppContainer>
@@ -17,41 +17,43 @@ export default function WineCellarPage({ savedWine }) {
           />
         </ImageContainer>
         <StyledHeader>Dein Weinkeller</StyledHeader>
-        <WineCard>
-          <WineInformationContainer>
-            <WinePictureContainer>
-              <Image
-                src={savedWine[0].src}
-                alt="wine picture"
-                layout={'responsive'}
-                height={50}
-                width={15}
-              />
-            </WinePictureContainer>
-            <WineButtonsAndNameContainer>
-              <p>{savedWine[0].name}</p>
-              <WineButtonsAndAmountContainer>
-                <StyledIncreaseButton>
-                  <Icon
-                    icon="fluent:add-circle-16-regular"
-                    color="#32a852"
-                    width={50}
-                    height={50}
-                  />
-                </StyledIncreaseButton>
-                <p>2</p>
-                <StyledDeacreaseButton>
-                  <Icon
-                    icon="akar-icons:circle-minus"
-                    color="#cd3c28"
-                    width={40}
-                    height={40}
-                  />
-                </StyledDeacreaseButton>
-              </WineButtonsAndAmountContainer>
-            </WineButtonsAndNameContainer>
-          </WineInformationContainer>
-        </WineCard>
+        {filteredWine.map(wine => (
+          <>
+            <WineCard>
+              <WinePictureContainer>
+                <Image
+                  src={wine.src}
+                  alt="wine picture"
+                  layout={'responsive'}
+                  height={50}
+                  width={15}
+                />
+              </WinePictureContainer>
+              <WineButtonsAndNameContainer>
+                <p>{wine.name}</p>
+                <WineButtonsAndAmountContainer>
+                  <StyledIncreaseButton>
+                    <Icon
+                      icon="fluent:add-circle-16-regular"
+                      color="#32a852"
+                      width={50}
+                      height={50}
+                    />
+                  </StyledIncreaseButton>
+                  <p>2</p>
+                  <StyledDeacreaseButton>
+                    <Icon
+                      icon="akar-icons:circle-minus"
+                      color="#cd3c28"
+                      width={40}
+                      height={40}
+                    />
+                  </StyledDeacreaseButton>
+                </WineButtonsAndAmountContainer>
+              </WineButtonsAndNameContainer>
+            </WineCard>
+          </>
+        ))}
         <NavBar>
           <Link href="/landing-page" passHref>
             <StyledQuizButton>Q</StyledQuizButton>
@@ -159,6 +161,9 @@ const StyledHeader = styled.h1`
 `;
 
 const WineCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 95%;
   height: fit-content;
   border: 1px #8a98a5 solid;
@@ -181,9 +186,7 @@ const WineButtonsAndNameContainer = styled.div`
   font-weight: bold;
 `;
 
-const WineInformationContainer = styled.div`
-  display: flex;
-`;
+const WineInformationContainer = styled.div``;
 const ImageContainer = styled.div`
   height: 145px;
   width: 100%;
