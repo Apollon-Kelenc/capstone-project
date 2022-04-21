@@ -2,22 +2,28 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 
-export default function ResultPage({ filteredWine, setSavedWine }) {
+export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
-    setSavedWine(filteredWine);
+    setSavedWine([...savedWine, filteredWine]);
   }
-  // const MyButton = () => {
-  //   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
-  //   const saveWineAllert = () => {
-  //     enqueueSnackbar('Dein Wein wurde gespeichert!');
-  //   };
+  const saveWineAlert = () => {
+    enqueueSnackbar('Dein Wein wurde gespeichert!', {
+      variant: 'success',
+      autoHideDuration: 1500,
+    });
+  };
+
+  function handleClick() {
+    saveWine();
+    saveWineAlert();
+  }
 
   return (
     <>
-      {/* <SnackbarProvider> */}
       <AppContainer>
         <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
@@ -57,8 +63,7 @@ export default function ResultPage({ filteredWine, setSavedWine }) {
               <Icon icon="codicon:debug-restart" />
             </RestartQuizButton>
           </Link>
-
-          <SaveWineButton onClick={saveWine}>
+          <SaveWineButton onClick={handleClick}>
             <Icon icon="emojione:wine-glass" width="32" height="32" />
           </SaveWineButton>
         </ButtonsCointainer>
@@ -83,7 +88,6 @@ export default function ResultPage({ filteredWine, setSavedWine }) {
           </StyledBarrelButton>
         </NavBar>
       </AppContainer>
-      {/* </SnackbarProvider> */}
     </>
   );
 }
