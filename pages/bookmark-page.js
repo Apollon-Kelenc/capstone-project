@@ -148,6 +148,7 @@ const StyledHeader = styled.h1`
 `;
 
 const WineCard = styled.div`
+  margin-bottom: 1rem;
   width: 95%;
   height: fit-content;
   border: 1px #8a98a5 solid;
@@ -172,7 +173,7 @@ const WineTasteProfileContainer = styled.p`
   align-self: flex-end;
   display: flex;
   gap: 10px;
-  margin-top: 1rem;
+  margin: 1rem 0rem 1.4rem 0rem;
 `;
 
 const WineTasteProfile = styled.div`
@@ -191,6 +192,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
   background-color: #77818b;
+  padding-bottom: 3rem;
 `;
