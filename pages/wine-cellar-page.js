@@ -19,7 +19,7 @@ export default function WineCellarPage({ savedWine }) {
         </ImageContainer>
         <StyledHeader>Dein Weinkeller</StyledHeader>
         <WineCard>
-          <WineInformation>
+          <WineInformationContainer>
             <WinePictureContainer>
               <Image
                 src={savedWine[0].src}
@@ -29,7 +29,7 @@ export default function WineCellarPage({ savedWine }) {
                 width={15}
               />
             </WinePictureContainer>
-            <WineName>
+            <WineButtonsAndNameContainer>
               <p>{savedWine[0].name}</p>
               <WineButtonsAndAmountContainer>
                 <StyledIncreaseButton>
@@ -50,8 +50,8 @@ export default function WineCellarPage({ savedWine }) {
                   />
                 </StyledDeacreaseButton>
               </WineButtonsAndAmountContainer>
-            </WineName>
-          </WineInformation>
+            </WineButtonsAndNameContainer>
+          </WineInformationContainer>
         </WineCard>
         <NavBar>
           <Link href="/landing-page" passHref>
@@ -63,7 +63,7 @@ export default function WineCellarPage({ savedWine }) {
             </Link>
           </StyledWineGlasButton>
           <StyledBarrelButton>
-            <Link href="/result-page" passHref>
+            <Link href="/wine-cellar-page" passHref>
               <Icon
                 icon="tabler:barrel"
                 color="#8a98a5"
@@ -84,7 +84,6 @@ const StyledIncreaseButton = styled.button`
   border: none;
   background-color: rgba(255, 255, 236, 1);
   border-radius: 50%;
-  margin-right: 2px;
 `;
 
 const StyledDeacreaseButton = styled.button`
@@ -95,14 +94,16 @@ const StyledDeacreaseButton = styled.button`
   border-radius: 50%;
   margin-left: 5px;
 `;
+
 const WineButtonsAndAmountContainer = styled.div`
   font-size: 24px;
   display: flex;
   align-self: center;
   align-items: center;
-  margin: 2.5rem 1.5rem 0rem 0rem;
+  margin: auto;
   gap: 10px;
 `;
+
 const NavBar = styled.footer`
   position: fixed;
   bottom: 0;
@@ -151,16 +152,6 @@ const StyledBarrelButton = styled.button`
   }
 `;
 
-const WineFitsTo = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
-const WineType = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
 const StyledHeader = styled.h1`
   margin: 1rem;
   font-size: 27px;
@@ -178,29 +169,20 @@ const WineCard = styled.div`
 
 const WinePictureContainer = styled.div`
   width: 2.7rem;
-  margin: 25px;
+  margin: 20px;
 `;
 
-const WineName = styled.div`
+const WineButtonsAndNameContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
-  font-size: 18px;
+  align-self: center;
+  align-items: center;
+  row-gap: 1rem;
+  font-size: 19px;
   font-weight: bold;
 `;
 
-const WineTasteProfileContainer = styled.p`
-  position: relative;
-  align-self: flex-end;
-  display: flex;
-  gap: 10px;
-  margin-top: 1rem;
-`;
-
-const WineTasteProfile = styled.div`
-  font-weight: 500;
-`;
-const WineInformation = styled.div`
+const WineInformationContainer = styled.div`
   display: flex;
 `;
 const ImageContainer = styled.div`

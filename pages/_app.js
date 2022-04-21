@@ -1,11 +1,22 @@
 import '../styles/globals.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { SnackbarProvider } from 'notistack';
+
+function useLocalState(key, initial) {
+  const [savedWine, setSavedWine] = useState(() => {
+    return initial;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(savedWine));
+  }, [savedWine, key]);
+
+  return [savedWine, setSavedWine];
+}
 
 function MyApp({ Component, pageProps }) {
   const [filteredWine, setFilteredWine] = useState([]);
-  const [savedWine, setSavedWine] = useState([
+  const [savedWine, setSavedWine] = useLocalState([
     {
       name: '',
       url: (

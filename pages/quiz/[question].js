@@ -132,7 +132,7 @@ const Question = ({ filteredWine, setFilteredWine }) => {
           </Link>
         </StyledWineGlasButton>
         <StyledBarrelButton>
-          <Link href="/result-page" passHref>
+          <Link href="/wine-cellar-page" passHref>
             <Icon icon="tabler:barrel" color="#8a98a5" width="47" height="47" />
           </Link>
         </StyledBarrelButton>

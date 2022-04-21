@@ -5,74 +5,76 @@ import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
 
 export default function BookmarkPage({ savedWine }) {
-  return (
-    <>
-      <AppContainer>
-        <ImageContainer>
-          <Image
-            src={header_picture}
-            alt="wine picture"
-            layout={'fill'}
-            objectFit={'cover'}
-          />
-        </ImageContainer>
-        <StyledHeader>Von dir ausgesucht</StyledHeader>
-        <WineCard>
-          <WineInformation>
-            <WinePictureContainer>
-              <Image
-                src={savedWine[0].src}
-                alt="wine picture"
-                layout={'responsive'}
-                height={55}
-                width={15}
-              />
-            </WinePictureContainer>
-            <WineName>
-              <li>{savedWine[0].name}</li>
-              <WineType>Art:</WineType>
-              <li>{savedWine[0].type}</li>
-              <li>
-                <WineFitsTo>Passt zu:</WineFitsTo>
-                {savedWine[0].pairsWith}
-              </li>
-              <WineTasteProfileContainer>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[0]}
-                </WineTasteProfile>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[1]}
-                </WineTasteProfile>
-                <WineTasteProfile>
-                  {savedWine[0].tasteProfile[2]}
-                </WineTasteProfile>
-              </WineTasteProfileContainer>
-            </WineName>
-          </WineInformation>
-        </WineCard>
-        <NavBar>
-          <Link href="/landing-page" passHref>
-            <StyledQuizButton>Q</StyledQuizButton>
-          </Link>
-          <StyledWineGlasButton>
-            <Link href="/bookmark-page" passHref>
-              <Icon icon="emojione:wine-glass" width="43" height="43" />
+  const boughtWine = JSON.parse(localStorage.getItem(savedWine));
+  if (boughtWine)
+    return (
+      <>
+        <AppContainer>
+          <ImageContainer>
+            <Image
+              src={header_picture}
+              alt="wine picture"
+              layout={'fill'}
+              objectFit={'cover'}
+            />
+          </ImageContainer>
+          <StyledHeader>Von dir ausgesucht</StyledHeader>
+          <WineCard>
+            <WineInformation>
+              <WinePictureContainer>
+                <Image
+                  src={boughtWine[0].src}
+                  alt="wine picture"
+                  layout={'responsive'}
+                  height={55}
+                  width={15}
+                />
+              </WinePictureContainer>
+              <WineName>
+                <li>{boughtWine[0].name}</li>
+                <WineType>Art:</WineType>
+                <li>{boughtWine[0].type}</li>
+                <li>
+                  <WineFitsTo>Passt zu:</WineFitsTo>
+                  {boughtWine[0].pairsWith}
+                </li>
+                <WineTasteProfileContainer>
+                  <WineTasteProfile>
+                    {boughtWine[0].tasteProfile[0]}
+                  </WineTasteProfile>
+                  <WineTasteProfile>
+                    {boughtWine[0].tasteProfile[1]}
+                  </WineTasteProfile>
+                  <WineTasteProfile>
+                    {boughtWine[0].tasteProfile[2]}
+                  </WineTasteProfile>
+                </WineTasteProfileContainer>
+              </WineName>
+            </WineInformation>
+          </WineCard>
+          <NavBar>
+            <Link href="/landing-page" passHref>
+              <StyledQuizButton>Q</StyledQuizButton>
             </Link>
-          </StyledWineGlasButton>
-          <StyledBarrelButton>
-            <Link href="/wine-cellar-page" passHref>
-              <Icon
-                icon="tabler:barrel"
-                color="#8a98a5"
-                width="47"
-                height="47"
-              />
-            </Link>
-          </StyledBarrelButton>
-        </NavBar>
-      </AppContainer>
-    </>
-  );
+            <StyledWineGlasButton>
+              <Link href="/bookmark-page" passHref>
+                <Icon icon="emojione:wine-glass" width="43" height="43" />
+              </Link>
+            </StyledWineGlasButton>
+            <StyledBarrelButton>
+              <Link href="/wine-cellar-page" passHref>
+                <Icon
+                  icon="tabler:barrel"
+                  color="#8a98a5"
+                  width="47"
+                  height="47"
+                />
+              </Link>
+            </StyledBarrelButton>
+          </NavBar>
+        </AppContainer>
+      </>
+    );
 }
 
 const NavBar = styled.footer`
