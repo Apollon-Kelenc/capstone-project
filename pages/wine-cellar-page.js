@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
-import wine_test_picture from '/public/wine/Acquesi asti.png';
 
 export default function WineCellarPage({ savedWine }) {
   return (
