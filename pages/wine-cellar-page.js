@@ -4,7 +4,7 @@ import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
 
-export default function BookmarkPage({ savedWine }) {
+export default function WineCellarPage({ filteredWine }) {
   return (
     <>
       <AppContainer>
@@ -16,46 +16,44 @@ export default function BookmarkPage({ savedWine }) {
             objectFit={'cover'}
           />
         </ImageContainer>
-        <StyledHeader>Von dir ausgesucht</StyledHeader>
-        {savedWine?.map(wineCard => {
-          return (
-            <>
-              <WineCard>
-                <WineInformation>
-                  <WinePictureContainer>
-                    <Image
-                      src={wineCard.src}
-                      alt="wine picture"
-                      layout={'responsive'}
-                      height={55}
-                      width={15}
+        <StyledHeader>Dein Weinkeller</StyledHeader>
+        {filteredWine.map(wine => (
+          <>
+            <WineCard>
+              <WinePictureContainer>
+                <Image
+                  src={wine.src}
+                  alt="wine picture"
+                  layout={'responsive'}
+                  height={50}
+                  width={15}
+                />
+              </WinePictureContainer>
+              <WineButtonsAndNameContainer>
+                <p>{wine.name}</p>
+                <WineButtonsAndAmountContainer>
+                  <StyledIncreaseButton>
+                    <Icon
+                      icon="fluent:add-circle-16-regular"
+                      color="#32a852"
+                      width={50}
+                      height={50}
                     />
-                  </WinePictureContainer>
-                  <WineName>
-                    <li>{wineCard.name}</li>
-                    <WineType>Art:</WineType>
-                    <li>{wineCard.type}</li>
-                    <li>
-                      <WineFitsTo>Passt zu:</WineFitsTo>
-                      {wineCard.pairsWith}
-                    </li>
-                    <WineTasteProfileContainer>
-                      <WineTasteProfile>
-                        {wineCard.tasteProfile[0]}
-                      </WineTasteProfile>
-                      <WineTasteProfile>
-                        {wineCard.tasteProfile[1]}
-                      </WineTasteProfile>
-                      <WineTasteProfile>
-                        {wineCard.tasteProfile[2]}
-                      </WineTasteProfile>
-                    </WineTasteProfileContainer>
-                  </WineName>
-                </WineInformation>
-              </WineCard>
-            </>
-          );
-        })}
+                  </StyledIncreaseButton>
+                  <p>1</p>
+                  <StyledDeacreaseButton>
+                    <Icon
+                      icon="akar-icons:circle-minus"
+                      color="#cd3c28"
+                      width={40}
+                      height={40}
+                    />
+                  </StyledDeacreaseButton>
+                </WineButtonsAndAmountContainer>
+              </WineButtonsAndNameContainer>
+            </WineCard>
+          </>
+        ))}
         <NavBar>
           <Link href="/landing-page" passHref>
             <StyledQuizButton>Q</StyledQuizButton>
@@ -80,6 +78,32 @@ export default function BookmarkPage({ savedWine }) {
     </>
   );
 }
+
+const StyledIncreaseButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
+  border-radius: 50%;
+`;
+
+const StyledDeacreaseButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
+  border-radius: 50%;
+  margin-left: 5px;
+`;
+
+const WineButtonsAndAmountContainer = styled.div`
+  font-size: 24px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin: auto;
+  gap: 10px;
+`;
 
 const NavBar = styled.footer`
   position: fixed;
@@ -129,16 +153,6 @@ const StyledBarrelButton = styled.button`
   }
 `;
 
-const WineFitsTo = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
-const WineType = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
 const StyledHeader = styled.h1`
   margin: 1rem;
   font-size: 27px;
@@ -147,7 +161,9 @@ const StyledHeader = styled.h1`
 `;
 
 const WineCard = styled.div`
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 95%;
   height: fit-content;
   border: 1px #8a98a5 solid;
@@ -157,30 +173,20 @@ const WineCard = styled.div`
 
 const WinePictureContainer = styled.div`
   width: 2.7rem;
-  margin: 25px;
+  margin: 20px;
 `;
 
-const WineName = styled.ul`
-  margin-top: 1.5rem;
-  font-size: 18px;
+const WineButtonsAndNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  row-gap: 1rem;
+  font-size: 19px;
   font-weight: bold;
-  list-style-type: none;
 `;
 
-const WineTasteProfileContainer = styled.p`
-  position: relative;
-  align-self: flex-end;
-  display: flex;
-  gap: 10px;
-  margin: 1rem 0rem 1.4rem 0rem;
-`;
-
-const WineTasteProfile = styled.div`
-  font-weight: 500;
-`;
-const WineInformation = styled.div`
-  display: flex;
-`;
+const WineInformationContainer = styled.div``;
 const ImageContainer = styled.div`
   height: 145px;
   width: 100%;
@@ -191,7 +197,6 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #77818b;
-  padding-bottom: 3rem;
   height: 100vh;
+  background-color: #77818b;
 `;

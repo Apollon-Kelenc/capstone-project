@@ -1,33 +1,34 @@
 import '../styles/globals.css';
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
+import { useState, useEffect } from 'react';
+import { useLocalStorage } from '../utils/useLocalStorage';
+import { Slide } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
+
+const initialWineState = [];
 
 function MyApp({ Component, pageProps }) {
   const [filteredWine, setFilteredWine] = useState([]);
-  const [savedWine, setSavedWine] = useState([
-    {
-      name: '',
-      url: (
-        <a href="" target="" rel="">
-          <Icon icon="" color="" width="" height="" />
-        </a>
-      ),
-      tasteProfile: [''],
-      type: '',
-      pairsWith: '',
-      tag: [''],
-      src: '',
-    },
-  ]);
+  const [savedWine, setSavedWine] = useLocalStorage(
+    'savedWine',
+    initialWineState
+  );
 
   return (
-    <Component
-      {...pageProps}
-      filteredWine={filteredWine}
-      setFilteredWine={setFilteredWine}
-      savedWine={savedWine}
-      setSavedWine={setSavedWine}
-    />
+    <SnackbarProvider
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      TransitionComponent={Slide}
+    >
+      <Component
+        {...pageProps}
+        filteredWine={filteredWine}
+        setFilteredWine={setFilteredWine}
+        savedWine={savedWine}
+        setSavedWine={setSavedWine}
+      />
+    </SnackbarProvider>
   );
 }
 

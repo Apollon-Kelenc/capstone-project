@@ -2,12 +2,26 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
+import { useSnackbar } from 'notistack';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
-    setSavedWine(filteredWine);
+    setSavedWine([...savedWine, ...filteredWine]);
   }
-  console.log(savedWine);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const saveWineAlert = () => {
+    enqueueSnackbar('Dein Wein wurde gespeichert!', {
+      variant: 'success',
+      autoHideDuration: 1500,
+    });
+  };
+
+  function handleClick() {
+    saveWine();
+    saveWineAlert();
+  }
+
   return (
     <>
       <AppContainer>
@@ -49,7 +63,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
               <Icon icon="codicon:debug-restart" />
             </RestartQuizButton>
           </Link>
-          <SaveWineButton onClick={saveWine}>
+          <SaveWineButton onClick={handleClick}>
             <Icon icon="emojione:wine-glass" width="32" height="32" />
           </SaveWineButton>
         </ButtonsCointainer>
@@ -63,7 +77,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
             </Link>
           </StyledWineGlasButton>
           <StyledBarrelButton>
-            <Link href="/result-page" passHref>
+            <Link href="/wine-cellar-page" passHref>
               <Icon
                 icon="tabler:barrel"
                 color="#8a98a5"
