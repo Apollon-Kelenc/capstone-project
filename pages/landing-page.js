@@ -32,9 +32,7 @@ export default function LandingPage() {
     </>
   );
 }
-const AppContainer = styled.div`
-  height: 100vh;
-`;
+const AppContainer = styled.div``;
 
 const StyledAppName = styled.h1`
   padding: 10rem 0rem 0rem 0rem;
