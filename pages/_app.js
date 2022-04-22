@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocalStorage } from '../utils/useLocalStorage';
 import { Slide } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
@@ -12,7 +12,10 @@ function MyApp({ Component, pageProps }) {
     'savedWine',
     initialWineState
   );
-
+  const [boughtWine, setBoughtWine] = useLocalStorage(
+    'boughtWine',
+    initialWineState
+  );
   return (
     <SnackbarProvider
       anchorOrigin={{
@@ -27,6 +30,8 @@ function MyApp({ Component, pageProps }) {
         setFilteredWine={setFilteredWine}
         savedWine={savedWine}
         setSavedWine={setSavedWine}
+        boughtWine={boughtWine}
+        setBoughtWine={setBoughtWine}
       />
     </SnackbarProvider>
   );

@@ -160,7 +160,6 @@ const RestartQuizButton = styled.button`
   width: auto;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
-  :hover,
   :active {
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
@@ -200,15 +199,14 @@ const NavBar = styled.footer`
 const StyledQuizButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 42px;
-  padding-bottom: 9px;
+  padding-bottom: 7px;
   color: #8a98a5;
   border: none;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    margin-top: 1px;
-  }
+  border-bottom: 5px solid white;
+  margin-top: 2px;
 `;
+
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: #8a98a5;

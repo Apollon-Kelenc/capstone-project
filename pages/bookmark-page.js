@@ -3,8 +3,25 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import header_picture from '/public/header-picture.jpeg';
 import { Icon } from '@iconify/react';
+import { useSnackbar } from 'notistack';
 
-export default function BookmarkPage({ savedWine }) {
+export default function BookmarkPage({ savedWine, setBoughtWine }) {
+  function saveBoughtWine() {
+    setBoughtWine([...savedWine]);
+  }
+  const { enqueueSnackbar } = useSnackbar();
+
+  const saveWineAlert = () => {
+    enqueueSnackbar('Der Wein liegt nun im Weinkeller!', {
+      variant: 'success',
+      autoHideDuration: 1500,
+    });
+  };
+
+  function handleClick() {
+    saveBoughtWine();
+    saveWineAlert();
+  }
   return (
     <>
       <AppContainer>
@@ -50,6 +67,18 @@ export default function BookmarkPage({ savedWine }) {
                         {wineCard.tasteProfile[2]}
                       </WineTasteProfile>
                     </WineTasteProfileContainer>
+                    <WineCardButtons>
+                      <WineCellarButton onClick={handleClick}>
+                        In den Weinkeller
+                        <Icon
+                          icon="tabler:barrel"
+                          color="#8a98a5"
+                          width="30"
+                          height="30"
+                        />
+                      </WineCellarButton>
+                      <WineBuyButton>{wineCard.url}</WineBuyButton>
+                    </WineCardButtons>
                   </WineName>
                 </WineInformation>
               </WineCard>
@@ -57,7 +86,7 @@ export default function BookmarkPage({ savedWine }) {
           );
         })}
         <NavBar>
-          <Link href="/landing-page" passHref>
+          <Link href="/quiz/start" passHref>
             <StyledQuizButton>Q</StyledQuizButton>
           </Link>
           <StyledWineGlasButton>
@@ -81,6 +110,19 @@ export default function BookmarkPage({ savedWine }) {
   );
 }
 
+const WineCardButtons = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+  gap: 2rem;
+  height: 2.5rem;
+`;
+
+const WineBuyButton = styled.button`
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
+`;
+
 const NavBar = styled.footer`
   position: fixed;
   bottom: 0;
@@ -100,10 +142,6 @@ const StyledQuizButton = styled.button`
   color: #8a98a5;
   border: none;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    margin-top: 1px;
-  }
 `;
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -111,10 +149,8 @@ const StyledWineGlasButton = styled.button`
   border: none;
   margin-top: 5px;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
-  }
+  border-bottom: 3px solid white;
+  padding-top: 3px;
 `;
 
 const StyledBarrelButton = styled.button`
@@ -123,9 +159,21 @@ const StyledBarrelButton = styled.button`
   border: none;
   margin-top: 3px;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
+`;
+
+const WineCellarButton = styled.button`
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+  border: none;
+  padding-left: 4px;
+  background-color: rgba(31, 31, 34, 1);
+  color: white;
+  transition: 0.1s;
+  :active {
+    border-color: rgba(89, 199, 72, 1);
+    color: rgba(89, 199, 72, 1);
   }
 `;
 
@@ -192,6 +240,6 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #77818b;
-  padding-bottom: 3rem;
-  height: 100vh;
+  height: 100%;
+  margin-bottom: 3rem;
 `;

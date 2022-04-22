@@ -10,7 +10,7 @@ import result_picture from '/public/result-picture.jpeg';
 import { Icon } from '@iconify/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Question = ({ filteredWine, setFilteredWine }) => {
+const Question = ({ setFilteredWine }) => {
   const [chosenAnswers, setChosenAnswers] = useState([]);
 
   const router = useRouter();
@@ -181,7 +181,7 @@ const BackArrow = styled.button`
   font-size: 30px;
   padding-bottom: 5px;
   color: black;
-  :hover {
+  :active {
     color: red;
   }
 `;
@@ -216,7 +216,6 @@ const ResultButton = styled.button`
   border: none;
   position: relative;
   z-index: 2;
-  :hover,
   :active {
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
@@ -239,14 +238,12 @@ const NavBar = styled.footer`
 const StyledQuizButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 42px;
-  padding-bottom: 9px;
+  padding-bottom: 7px;
   color: #8a98a5;
   border: none;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    margin-top: 1px;
-  }
+  border-bottom: 5px solid white;
+  margin-top: 2px;
 `;
 const StyledWineGlasButton = styled.button`
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -254,10 +251,6 @@ const StyledWineGlasButton = styled.button`
   border: none;
   margin-top: 5px;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
-  }
 `;
 
 const StyledBarrelButton = styled.button`
@@ -266,8 +259,4 @@ const StyledBarrelButton = styled.button`
   border: none;
   margin-top: 3px;
   background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
-  }
 `;
