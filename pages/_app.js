@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <SnackbarProvider
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
       TransitionComponent={Slide}
