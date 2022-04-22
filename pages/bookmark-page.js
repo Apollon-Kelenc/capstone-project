@@ -18,7 +18,6 @@ export default function BookmarkPage({ savedWine }) {
         </ImageContainer>
         <StyledHeader>Von dir ausgesucht</StyledHeader>
         {savedWine?.map(wineCard => {
-          console.log(savedWine);
           return (
             <>
               <WineCard>

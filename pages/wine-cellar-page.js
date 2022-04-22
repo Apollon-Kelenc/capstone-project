@@ -40,7 +40,7 @@ export default function WineCellarPage({ filteredWine }) {
                       height={50}
                     />
                   </StyledIncreaseButton>
-                  <p>2</p>
+                  <p>1</p>
                   <StyledDeacreaseButton>
                     <Icon
                       icon="akar-icons:circle-minus"
