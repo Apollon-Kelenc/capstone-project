@@ -27,7 +27,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
       <AppContainer>
         <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
-          {filteredWine.map(wine => (
+          {filteredWine.map((wine, index) => (
             <>
               <WineBottleContainer>
                 <Image
@@ -35,6 +35,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
                   alt="Wine Sample Picture"
                   layout={'fill'}
                   objectFit={'contain'}
+                  key={index}
                 />
               </WineBottleContainer>
               <WineName>
