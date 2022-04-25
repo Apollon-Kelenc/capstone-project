@@ -189,6 +189,7 @@ const ImageContainer = styled.div`
   width: 100%;
   position: relative;
 `;
+
 const ResultButton = styled.button`
   font-size: 30px;
   font-weight: 500;
