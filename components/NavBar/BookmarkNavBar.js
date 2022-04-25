@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export default function NavBar() {
+export default function BookmarkNavBar() {
   return (
     <>
       <StyledNavbar>
@@ -39,6 +39,8 @@ const StyledWineGlasButton = styled.button`
   border: none;
   margin-top: 5px;
   background-color: rgba(31, 31, 35, 1);
+  border-bottom: 3px solid white;
+  padding-top: 3px;
 `;
 
 const StyledBarrelButton = styled.button`
@@ -47,8 +49,6 @@ const StyledBarrelButton = styled.button`
   border: none;
   margin-top: 3px;
   background-color: rgba(31, 31, 35, 1);
-  border-bottom: 3px solid white;
-  padding-top: 3px;
 `;
 
 const StyledNavbar = styled.footer`
