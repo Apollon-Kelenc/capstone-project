@@ -1,40 +1,35 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
-import landing_picture from '../public/new-landing-page-picture.png';
+import landing_picture from '../public/landing-page-picture.png';
 
 export default function LandingPage() {
   return (
     <>
-      <AppContainer>
-        <ImageContainer>
-          <Image
-            src={landing_picture}
-            alt="wine picture"
-            layout={'fill'}
-            objectFit={'cover'}
-            unoptimized={true}
-            quality="100"
-          />
-        </ImageContainer>
-        <StyledAppName>In Vino Veritas</StyledAppName>
-        <AppInfo>Dein Wein Sommelier</AppInfo>
-        <ParagraphContainer>
-          <p>
-            Beantworte die folgenden Fragen und erhalte deine personalisierte
-            Weinempfehlung für dein Essen.
-          </p>
-        </ParagraphContainer>
-        <Link href="/quiz/start" passHref>
-          <StartQuizButton>Starte das Quiz</StartQuizButton>
-        </Link>
-      </AppContainer>
+      <ImageContainer>
+        <Image
+          src={landing_picture}
+          alt="wine picture"
+          layout={'fill'}
+          objectFit={'cover'}
+          unoptimized={true}
+          quality="100"
+        />
+      </ImageContainer>
+      <StyledAppName>In Vino Veritas</StyledAppName>
+      <AppInfo>Dein Wein Sommelier</AppInfo>
+      <ParagraphContainer>
+        <p>
+          Beantworte die folgenden Fragen und erhalte deine personalisierte
+          Weinempfehlung für dein Essen.
+        </p>
+      </ParagraphContainer>
+      <Link href="/quiz/start" passHref>
+        <StartQuizButton>Starte das Quiz</StartQuizButton>
+      </Link>
     </>
   );
 }
-const AppContainer = styled.div`
-  height: 100vh;
-`;
 
 const StyledAppName = styled.h1`
   padding: 10rem 0rem 0rem 0rem;

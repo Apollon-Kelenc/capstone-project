@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import { useSnackbar } from 'notistack';
+import QuizNavBar from '../components/NavBar/QuizNavBar';
 
 export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   function saveWine() {
@@ -27,7 +28,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
       <AppContainer>
         <StyledHeader>Deine Empfehlung</StyledHeader>
         <ParagraphContainer>
-          {filteredWine.map(wine => (
+          {filteredWine.map((wine, index) => (
             <>
               <WineBottleContainer>
                 <Image
@@ -35,6 +36,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
                   alt="Wine Sample Picture"
                   layout={'fill'}
                   objectFit={'contain'}
+                  key={index}
                 />
               </WineBottleContainer>
               <WineName>
@@ -67,26 +69,7 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
             <Icon icon="emojione:wine-glass" width="32" height="32" />
           </SaveWineButton>
         </ButtonsCointainer>
-        <NavBar>
-          <Link href="/landing-page" passHref>
-            <StyledQuizButton>Q</StyledQuizButton>
-          </Link>
-          <StyledWineGlasButton>
-            <Link href="/bookmark-page" passHref>
-              <Icon icon="emojione:wine-glass" width="43" height="43" />
-            </Link>
-          </StyledWineGlasButton>
-          <StyledBarrelButton>
-            <Link href="/wine-cellar-page" passHref>
-              <Icon
-                icon="tabler:barrel"
-                color="#8a98a5"
-                width="47"
-                height="47"
-              />
-            </Link>
-          </StyledBarrelButton>
-        </NavBar>
+        <QuizNavBar />
       </AppContainer>
     </>
   );
@@ -160,7 +143,6 @@ const RestartQuizButton = styled.button`
   width: auto;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), -2px -2px 1px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
-  :hover,
   :active {
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
@@ -185,53 +167,6 @@ const SaveWineButton = styled.button`
   }
 `;
 
-const NavBar = styled.footer`
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 59px;
-  gap: 30px;
-  background-color: rgba(31, 31, 35, 1);
-`;
-const StyledQuizButton = styled.button`
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 42px;
-  padding-bottom: 9px;
-  color: #8a98a5;
-  border: none;
-  background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    margin-top: 1px;
-  }
-`;
-const StyledWineGlasButton = styled.button`
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #8a98a5;
-  border: none;
-  margin-top: 5px;
-  background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
-  }
-`;
-
-const StyledBarrelButton = styled.button`
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #8a98a5;
-  border: none;
-  margin-top: 3px;
-  background-color: rgba(31, 31, 35, 1);
-  :hover {
-    border-bottom: 3px solid white;
-    padding-top: 3px;
-  }
-`;
 const ButtonsCointainer = styled.div`
   display: flex;
 `;
