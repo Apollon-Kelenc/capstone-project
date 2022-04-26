@@ -31,6 +31,13 @@ export default function LandingPage() {
   );
 }
 
+const ImageContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+`;
+
 const StyledAppName = styled.h1`
   padding: 10rem 0rem 0rem 0rem;
   margin: 0rem 0rem 1rem 1rem;
@@ -41,25 +48,20 @@ const StyledAppName = styled.h1`
   position: relative;
   z-index: 2;
 `;
+
 const AppInfo = styled.p`
   margin-left: 1rem;
   color: white;
   position: relative;
   z-index: 2;
 `;
+
 const ParagraphContainer = styled.div`
   margin-top: 50px;
   padding: 0rem 8rem 0rem 1rem;
   color: white;
   position: relative;
   z-index: 2;
-`;
-
-const ImageContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
 `;
 
 const StartQuizButton = styled.button`

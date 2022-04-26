@@ -47,7 +47,7 @@ const Question = ({ setFilteredWine }) => {
           objectFit={'cover'}
         />
       </ImageContainer>
-      <StyledHeader>{currentQuestion?.question}</StyledHeader>
+      <StyledQuestion>{currentQuestion?.question}</StyledQuestion>
       {chosenAnswers.length < 3 ? (
         <Container
           key={currentQuestion?.question}
@@ -59,7 +59,7 @@ const Question = ({ setFilteredWine }) => {
           animate="show"
         >
           {currentQuestion?.answers.map(answer => (
-            <FoodButton
+            <AnswerButton
               variants={{
                 hidden: { scale: 0.6, y: -10, opacity: 0 },
                 show: { scale: 1, y: 0, opacity: 1 },
@@ -78,7 +78,7 @@ const Question = ({ setFilteredWine }) => {
               }}
             >
               {answer.label}
-            </FoodButton>
+            </AnswerButton>
           ))}
         </Container>
       ) : (
@@ -129,6 +129,19 @@ const Question = ({ setFilteredWine }) => {
 
 export default Question;
 
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+`;
+
+const ImageContainer = styled.div`
+  height: 145px;
+  width: 100%;
+  position: relative;
+`;
+
 const Container = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -136,7 +149,14 @@ const Container = styled(motion.div)`
   justify-items: center;
 `;
 
-const FoodButton = styled(motion.button)`
+const StyledQuestion = styled.h1`
+  margin: 1.5rem 0em 1rem 0rem;
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+`;
+
+const AnswerButton = styled(motion.button)`
   width: 100%;
   padding: 30px 20px;
   background-color: rgba(255, 255, 236, 1);
@@ -146,15 +166,10 @@ const FoodButton = styled(motion.button)`
   color: black;
 `;
 
-const BackText = styled.p`
+const StyledCounter = styled.div`
   color: white;
-`;
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
+  font-size: 17px;
+  margin-top: 1rem;
 `;
 
 const BackArrow = styled.button`
@@ -171,23 +186,8 @@ const BackArrow = styled.button`
   }
 `;
 
-const StyledHeader = styled.h1`
-  margin: 1.5rem 0em 1rem 0rem;
-  font-size: 24px;
-  font-weight: 500;
+const BackText = styled.p`
   color: white;
-`;
-
-const StyledCounter = styled.div`
-  color: white;
-  font-size: 17px;
-  margin-top: 1rem;
-`;
-
-const ImageContainer = styled.div`
-  height: 145px;
-  width: 100%;
-  position: relative;
 `;
 
 const ResultButton = styled.button`

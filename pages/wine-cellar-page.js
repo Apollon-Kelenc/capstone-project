@@ -27,11 +27,13 @@ export default function WineCellarPage({ boughtWine }) {
     </>
   );
 }
-const StyledHeader = styled.h1`
-  margin: 1rem;
-  font-size: 27px;
-  font-weight: 500;
-  color: white;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 3.5rem;
 `;
 
 const ImageContainer = styled.div`
@@ -40,11 +42,9 @@ const ImageContainer = styled.div`
   position: relative;
 `;
 
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  margin-bottom: 3.5rem;
-  background-color: #77818b;
+const StyledHeader = styled.h1`
+  margin: 1rem;
+  font-size: 27px;
+  font-weight: 500;
+  color: white;
 `;
