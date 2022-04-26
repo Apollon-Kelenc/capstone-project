@@ -203,7 +203,6 @@ const ResultButton = styled.button`
   position: relative;
   z-index: 2;
   :active {
-    border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
     border: 2px solid rgba(89, 199, 72, 1);
   }
