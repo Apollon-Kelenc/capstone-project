@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Capstone Project In Vino Veritas
+---
 
-## Getting Started
+In Vino Veritas is an Quiz like App that suggest the user a fitting wine to a selected dish, which is specificly choosen based on the users answers to their dish and their wine preference.
+All of the suggestet wines can be bought over the app and saved inside the app. This helps the user keeping track of all wines that are bought and stored at home. 
 
-First, run the development server:
+## How it Works
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Start the Quiz
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+By clicking the "Starte das Quiz" button on the landing page the user will be directed to the questions of the quiz.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### The Quiz
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The user will be presented with 3 specific question to the ingredients of their choosen dish and their wine preference.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To answer the questions the user simply clicks on their choosen answer and will be presented with the next questions.
 
-## Learn More
+A click on the back arrow will restart the quiz, incase the user wants to change his answers.
 
-To learn more about Next.js, take a look at the following resources:
+### Result Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+After answering all the questions of the quiz and clicking on the "dein Resultat" button the user will receive a wine suggestion that fits exactly the criteria of the user.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+On the result page the user is able to buy the suggested wine by clicking on the shopping cart button, which will direct on a new website to buy the wine.
 
-## Deploy on Vercel
+A suggested wine can be saved by clicking on the wine glass button and will be shown in the "Von dir Ausgesucht" page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To restart the quiz the user can click the "neue suche" button.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### "Von dir Ausgesucht" Page
+
+To navigate to the "Von dir Ausgesucht" page the user needs to click the wine glass in the navigation bar.
+
+Here the user will see all of his saved wines from the result page and is able to buy a wine by clicking the shopping cart symbol.
+
+If the user bought a wine he can click the "In deinen Weinkeller" button to mark this wine as a bought or stored wine which he can find at the "Dein Weinkeller" page.
+
+### "Dein Weinkeller" Page
+
+A click on the barrel in the navigation will direct the user to the "Dein Weinkeller" page.
+
+On this page the user will be able to keep track what wine he has stored and can increase or decrease the amount of wine bottles.
+
+
+## Deployment on Vercel
+
+Check out [In Vino Veritas](https://in-vino-veritas.vercel.app/) for more details.
