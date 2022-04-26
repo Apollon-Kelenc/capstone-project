@@ -42,6 +42,7 @@ If the user bought a wine he can click the "In deinen Weinkeller" button to mark
 A click on the barrel in the navigation will direct the user to the "Dein Weinkeller" page.
 
 On this page the user will be able to keep track what wine he has stored and can increase or decrease the amount of wine bottles.
+
 ---
 
-# Check out [In Vino Veritas](https://in-vino-veritas.vercel.app/) for more details.
+## Check out [In Vino Veritas](https://in-vino-veritas.vercel.app/) for more details.
