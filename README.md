@@ -1,4 +1,4 @@
-#Capstone Project In Vino Veritas
+# Capstone Project In Vino Veritas
 ---
 
 In Vino Veritas is an Quiz like App that suggest the user a fitting wine to a selected dish, which is specificly choosen based on the users answers to their dish and their wine preference.
