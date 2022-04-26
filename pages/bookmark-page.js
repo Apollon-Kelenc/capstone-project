@@ -49,7 +49,7 @@ export default function BookmarkPage({ savedWine, setBoughtWine }) {
                       width={15}
                     />
                   </WinePictureContainer>
-                  <WineName>
+                  <Wine>
                     <li>{wineCard.name}</li>
                     <WineType>Art:</WineType>
                     <li>{wineCard.type}</li>
@@ -80,7 +80,7 @@ export default function BookmarkPage({ savedWine, setBoughtWine }) {
                       </WineCellarButton>
                       <WineBuyButton>{wineCard.url}</WineBuyButton>
                     </WineCardButtons>
-                  </WineName>
+                  </Wine>
                 </WineInformation>
               </WineCard>
             </>
@@ -92,43 +92,18 @@ export default function BookmarkPage({ savedWine, setBoughtWine }) {
   );
 }
 
-const WineCardButtons = styled.div`
+const AppContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 8px;
-  gap: 2rem;
-  height: 2.5rem;
-`;
-
-const WineBuyButton = styled.button`
-  border: none;
-  background-color: rgba(255, 255, 236, 1);
-`;
-
-const WineCellarButton = styled.button`
-  font-size: 16px;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  border-radius: 9px;
-  border: none;
-  padding-left: 4px;
-  background-color: rgba(31, 31, 34, 1);
-  color: white;
-  transition: 0.1s;
-  :active {
-    border-color: rgba(89, 199, 72, 1);
-    color: rgba(89, 199, 72, 1);
-  }
+  height: 100%;
+  margin-bottom: 3rem;
 `;
 
-const WineFitsTo = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
-`;
-
-const WineType = styled.p`
-  font-weight: 500;
-  margin-top: 0.5rem;
+const ImageContainer = styled.div`
+  height: 145px;
+  width: 100%;
+  position: relative;
 `;
 
 const StyledHeader = styled.h1`
@@ -147,16 +122,30 @@ const WineCard = styled.div`
   background-color: rgba(255, 255, 236, 1);
 `;
 
+const WineInformation = styled.div`
+  display: flex;
+`;
+
 const WinePictureContainer = styled.div`
   width: 2.7rem;
   margin: 25px;
 `;
 
-const WineName = styled.ul`
+const Wine = styled.ul`
   margin-top: 1.5rem;
   font-size: 18px;
   font-weight: bold;
   list-style-type: none;
+`;
+
+const WineType = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
+
+const WineFitsTo = styled.p`
+  font-weight: 500;
+  margin-top: 0.5rem;
 `;
 
 const WineTasteProfileContainer = styled.p`
@@ -170,19 +159,32 @@ const WineTasteProfileContainer = styled.p`
 const WineTasteProfile = styled.div`
   font-weight: 500;
 `;
-const WineInformation = styled.div`
+
+const WineCardButtons = styled.div`
   display: flex;
-`;
-const ImageContainer = styled.div`
-  height: 145px;
-  width: 100%;
-  position: relative;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+  gap: 2rem;
+  height: 2.5rem;
 `;
 
-const AppContainer = styled.div`
+const WineCellarButton = styled.button`
+  font-size: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  height: 100%;
-  margin-bottom: 3rem;
+  border-radius: 9px;
+  border: none;
+  padding-left: 4px;
+  background-color: rgba(31, 31, 34, 1);
+  color: white;
+  transition: 0.1s;
+  :active {
+    border-color: rgba(89, 199, 72, 1);
+    color: rgba(89, 199, 72, 1);
+  }
+`;
+
+const WineBuyButton = styled.button`
+  border: none;
+  background-color: rgba(255, 255, 236, 1);
 `;

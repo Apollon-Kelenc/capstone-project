@@ -75,6 +75,14 @@ export default function ResultPage({ filteredWine, setSavedWine, savedWine }) {
   );
 }
 
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #77818b;
+`;
+
 const StyledHeader = styled.h1`
   margin: 1.5rem;
   font-size: 27px;
@@ -101,8 +109,13 @@ const WineName = styled.p`
   font-weight: 700;
 `;
 
-const WineType = styled.p`
-  margin-bottom: 0.5rem;
+const BuyButton = styled.button`
+  margin-left: 1rem;
+  background-color: white;
+  height: 42px;
+  width: 42px;
+  border-radius: 21px;
+  border: 0.5px solid white;
 `;
 
 const StyledList = styled.ul`
@@ -111,21 +124,12 @@ const StyledList = styled.ul`
   font-weight: 700;
 `;
 
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  background-color: #77818b;
+const WineType = styled.p`
+  margin-bottom: 0.5rem;
 `;
 
-const BuyButton = styled.button`
-  margin-left: 1rem;
-  background-color: white;
-  height: 42px;
-  width: 42px;
-  border-radius: 21px;
-  border: 0.5px solid white;
+const ButtonsCointainer = styled.div`
+  display: flex;
 `;
 
 const RestartQuizButton = styled.button`
@@ -165,8 +169,4 @@ const SaveWineButton = styled.button`
     border-color: rgba(89, 199, 72, 1);
     color: rgba(89, 199, 72, 1);
   }
-`;
-
-const ButtonsCointainer = styled.div`
-  display: flex;
 `;
