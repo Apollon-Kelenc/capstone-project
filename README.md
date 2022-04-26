@@ -7,7 +7,7 @@ All of the suggestet wines can be bought over the app and saved inside the app. 
 # How it Works
 
 
-### **Start the Quiz**
+### Start the Quiz
 
 By clicking the "Starte das Quiz" button on the landing page the user will be directed to the questions of the quiz.
 
